@@ -1,0 +1,190 @@
+/* 
+author  : Muhamad Munawir Amin
+Email   : muhamadmunawiramin@gmail.com
+Date    : 4 February 2021
+ */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.3s ease;
+    background-color: black;
+}
+
+.application-content-card:hover .overlay {
+    opacity: 0.5;
+}
+
+.icon {
+    color: white;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+@media only screen and (max-width: 280px) {
+    .application-content-container {
+        width: 90% !important;
+    }
+
+    .application-content-card-content {
+        padding: 8px !important;
+        font-size: 8px !important;
+    }
+}
+
+@media only screen and (min-width: 281px) {
+    .application-content-container {
+        width: 90% !important;
+    }
+
+    .application-content-card-content {
+        padding: 8px !important;
+        font-size: 8px !important;
+    }
+}
+
+@media only screen and (min-width: 320px) {
+    .application-content-container {
+        width: 85% !important;
+    }
+
+    .application-content-card-content {
+        padding: 10px !important;
+        font-size: 8px !important;
+    }
+}
+
+@media only screen and (min-width: 360px) {
+    .application-content-container {
+        width: 85% !important;
+    }
+
+    .application-content-card-content {
+        padding: 12px !important;
+        font-size: 9px !important;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .application-content-container {
+        width: 85% !important;
+    }
+
+    .application-content-card-content {
+        padding: 12px !important;
+        font-size: 9px !important;
+    }
+}
+
+@media only screen and (min-width: 411px) {
+    .application-content-container {
+        width: 85% !important;
+    }
+
+    .application-content-card-content {
+        padding: 12px !important;
+        font-size: 11px !important;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    .application-content-container {
+        width: 85% !important;
+    }
+
+    .application-content-card-content {
+        padding: 12px !important;
+        font-size: 11px !important;
+    }
+}
+
+@media only screen and (min-width: 540px) {
+    .application-content-container {
+        width: 85% !important;
+    }
+
+    .application-content-card-content {
+        padding: 14px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .application-content-container {
+        width: 80% !important;
+    }
+    .application-content-card-content {
+        padding: 14px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .application-content-card-content {
+        padding: 16px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 785px) {
+    .application-content-card-content {
+        padding: 16px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 825px) {
+    .application-content-card-content {
+        padding: 18px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 845px) {
+    .application-content-card-content {
+        padding: 18px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 925px) {
+    .application-content-card-content {
+        padding: 20px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .application-content-card-content {
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 1055px) {
+    .application-content-card-content {
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 1160px) {
+    .application-content-card-content {
+        font-size: 16px !important;
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+    .application-content-card-content {
+        font-size: 16px !important;
+    }
+}
