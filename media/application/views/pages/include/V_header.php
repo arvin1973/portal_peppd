@@ -98,6 +98,10 @@
         border: 1px solid black;
       }
 
+      .card-image {
+        width: 50%;
+      }
+
       .row-infograph {
         overflow-x: none;
         flex-wrap: nowrap;
@@ -143,6 +147,12 @@
       .card-activity {
         height: 8rem;
         padding-top: 0px;
+      }
+
+
+      .card-text {
+        text-align: center;
+        font-size: 0.8rem;
       }
 
       .box-img-activity {
@@ -221,13 +231,18 @@
       }
     }
 
-    @media (min-width: 576px) {
+    @media (min-width: 575px) {
       .dekstop {
         display: none !important;
       }
 
       .mobile {
         display: block !important;
+      }
+
+      .card-text {
+        text-align: center;
+        font-size: 0.8rem;
       }
 
       .card-infograph {
@@ -285,6 +300,10 @@
         font-size: 0.5rem;
       }
 
+      .card-image {
+        width: 40%;
+      }
+
       .col-footer-2 {
         padding-left: 8%;
       }
@@ -325,6 +344,10 @@
         text-align: center;
       }
 
+      .card-image {
+        width: 50%;
+      }
+
       .infograph-body-text {
         display: flex;
         font-size: 14px;
@@ -350,6 +373,11 @@
       .card-activity {
         height: 9rem;
         padding-top: 0px;
+      }
+
+      .card-text {
+        text-align: center;
+        font-size: 0.8rem;
       }
 
       .box-img-activity {
@@ -640,6 +668,11 @@
       .box-text-activity {
         padding-top: 20px;
         padding-right: 40px;
+      }
+
+      .card-text {
+        text-align: center;
+        font-size: 0.8rem;
       }
     }
 
