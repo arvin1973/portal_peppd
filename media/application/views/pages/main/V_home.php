@@ -5,10 +5,12 @@
         <!-- Section Carousel-->
         <div class="col-md-12 order-1">
           <section class="carousel">
-            <div id="carouselExampleIndicators" class="carousel slide img-thumbnail" data-ride="carousel" style="border-radius: 0">
+            <div id="carouselExampleIndicators" class="carousel slide img-thumbnail" data-ride="carousel"
+              style="border-radius: 0">
               <ol class="carousel-indicators" style="justify-content: left; margin-left: 5%;">
                 <?php for ($i = 0; $i < count($carousel_content); $i++) { ?>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="<?php echo ($i == 0 ? 'active' : '') ?>"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>"
+                    class="<?php echo ($i == 0 ? 'active' : '') ?>"></li>
                 <?php } ?>
               </ol>
               <div class="carousel-inner">
@@ -19,11 +21,18 @@
                       src="<?= base_url(); ?>assets/images/img/carousel/carousel_1_1min.png"
                       alt="First slide"
                   /> -->
-                    <a class="btn-read-more-article" data-id="<?php echo $carousel_content[$i][0]->id ?>" href="<?= base_url(); ?>news/<?php echo $carousel_content[$i][0]->slug ?>" target="_blank" rel="noopener">
+                    <a class="btn-read-more-article" data-id="<?php echo $carousel_content[$i][0]->id ?>"
+                      href="<?= base_url(); ?>news/<?php echo $carousel_content[$i][0]->slug ?>" target="_blank"
+                      rel="noopener">
                       <!-- <img class="d-block w-100" style="height: 28vw;" src="<?= base_url(); ?>assets/images/summernote/<?php echo $carousel_content[$i][0]->title_picture ?>" alt="<?php echo $i ?> slide" /> -->
-                      <img class="d-block w-100" style="background: url(<?= base_url(); ?>assets/images/summernote/<?php echo $carousel_content[$i][0]->title_picture ?>); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: black;" alt="<?php echo $i ?> slide" />
-                      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.7); right: 0!important; left: 0!important; bottom: 0!important; padding: 1% 5% 3% 5%; text-align: left;">
-                        <p class="animate__animated animate__fadeInLeft"><strong><?php echo $carousel_content[$i][0]->title ?></strong></p>
+                      <img class="d-block w-100"
+                        style="background: url(<?= base_url(); ?>assets/images/summernote/<?php echo $carousel_content[$i][0]->title_picture ?>); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: black;"
+                        alt="<?php echo $i ?> slide" />
+                      <div class="carousel-caption d-none d-md-block"
+                        style="background-color: rgba(0, 0, 0, 0.7); right: 0!important; left: 0!important; bottom: 0!important; padding: 1% 5% 3% 5%; text-align: left;">
+                        <p class="animate__animated animate__fadeInLeft"><strong>
+                            <?php echo $carousel_content[$i][0]->title ?>
+                          </strong></p>
                       </div>
                     </a>
                   </div>
@@ -56,138 +65,217 @@
         <!-- End Section Carousel -->
 
         <!-- infografis card -->
-        <div class="col-md-12">
+        <div class="col-md-12 order-4">
           <section class="card-infografis">
             <a href="<?= base_url(); ?>infograph" target="_blank" style="color: black;">
               Infografis
               <i class="fa fa-angle-double-right" aria-hidden="true"></i>
             </a>
             <hr />
-            <div class="row" style="overflow-x: none; flex-wrap: nowrap; font-family: 'Monda', sans-serif;">
+            <div class="row row-infograph">
               <div class="col-4 p-0">
-                <div class="card ml-2 mt-0 mb-3" style="height: 175px; border-radius: 10px; border: 1px solid black;">
-                  <div class="card-header" style="height: 55px;">
+                <div class="card card-infograph">
+                  <div class="card-header">
                     <div class="col-12 p-0">
-                      <h6 class="card-title" style="font-family: 'Monda', sans-serif; font-size: 14px; "><b><?php echo $pertumbuhan_ekonomi[0]['nm_indikator'] ?></b></h6>
+                      <h6 class="card-title infograph-title-text"><b>
+                          <?php echo $pertumbuhan_ekonomi[0]['nm_indikator'] ?>
+                        </b></h6>
                     </div>
                   </div>
-                  <div class="card-body" style="padding: 0.75rem; height: 200px;">
+                  <div class="card-body">
                     <div class="row">
-                      <div class="col-7" style="align-self: center;">
-                        <div style="display: flex; align-items: center;">
-                          <h2 style="font-family: 'Monda', sans-serif; font-size: 11px;"><b>(<?php echo $pertumbuhan_ekonomi[0]['tahun'] ?>):</b><?php echo $pertumbuhan_ekonomi[0]['nilai'] ?><?php echo $pertumbuhan_ekonomi[0]['satuan'] ?> </h2>
+                      <div class="col-7">
+                        <div class="infograph-body-text">
+                          <p><b>Tahun
+                              <?php echo $pertumbuhan_ekonomi[0]['tahun'] ?>:
+                            </b>
+                            <?php echo $pertumbuhan_ekonomi[0]['nilai'] . $pertumbuhan_ekonomi[0]['satuan'] ?>
+
+                          </p>
 
                           <?php if ($pertumbuhan_ekonomi[0]['jenis'] == 'positif') { ?>
                             <?php if ($pertumbuhan_ekonomi[0]['nilai'] >= $pertumbuhan_ekonomi[1]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-xs fa-arrow-up" aria-hidden="true"></i></span></h6>
-                            <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] < $pertumbuhan_ekonomi[1]['nilai']) { ?>
-                              <h6><span class="badge badge-danger mx-2"><i class="fa fa-xs fa-arrow-down" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                    title="Naik <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
+                              </h6>
+                            <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] < $pertumbuhan_ekonomi[2]['nilai']) { ?>
+                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                    title="Turun <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } ?>
                           <?php } elseif ($pertumbuhan_ekonomi[0]['jenis'] == 'negatif') { ?>
-                            <?php if ($pertumbuhan_ekonomi[0]['nilai'] <= $pertumbuhan_ekonomi[1]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-xs fa-arrow-down" aria-hidden="true"></i></span></h6>
-                            <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] > $pertumbuhan_ekonomi[1]['nilai']) { ?>
-                              <h6><span class="badge badge-danger mx-2"><i class="fa fa-xs fa-arrow-up" aria-hidden="true"></i></span></h6>
+                            <?php if ($pertumbuhan_ekonomi[0]['nilai'] <= $pertumbuhan_ekonomi[2]['nilai']) { ?>
+                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                    title="Turun <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
+                              </h6>
+                            <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] > $pertumbuhan_ekonomi[2]['nilai']) { ?>
+                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                    title="Naik <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } ?>
                           <?php } ?>
 
+
                         </div>
-                        <p class="card-text" style="font-family: 'Monda', sans-serif; font-size: 10px; padding-bottom: 0px; margin-bottom: 5px;"><b>(<?php echo $pertumbuhan_ekonomi[1]['tahun'] ?>):</b> <?php echo $pertumbuhan_ekonomi[1]['nilai'] ?><?php echo $pertumbuhan_ekonomi[1]['satuan'] ?></p>
+                        <div class="infograph-body-text">
+                          <p>
+                            <b>Tahun
+                              <?php echo $pertumbuhan_ekonomi[1]['tahun'] ?>:
+                            </b>
+                            <?php echo $pertumbuhan_ekonomi[1]['nilai'] . $pertumbuhan_ekonomi[1]['satuan'] ?>
+
+                          </p>
+                        </div>
                       </div>
                       <div class="col-5">
-                        <img class="w-100" src="<?= base_url(); ?>assets/images/img/icon_pemantauan/pertumbuhan_ekonomi.jpg" alt="Pertumbuhan Ekonomi" />
+                        <img class="w-100"
+                          src="<?= base_url(); ?>assets/images/img/icon_pemantauan/pertumbuhan_ekonomi.jpg"
+                          alt="Pertumbuhan Ekonomi" />
                       </div>
                     </div>
                   </div>
                   <div class="card-footer pt-0">
-                    <button type="button" style="padding: 0.5% 10%;" class="button-read-more btn-read-more-article" onclick="openDetailPage('pertumbuhan_ekonomi', 'nasional')">
-                        Detail <i class="fa fa-caret-right"></i>
+                    <button type="button" class="button-detail-infograph"
+                      onclick="openDetailPage('pertumbuhan_ekonomi', 'nasional')">
+                      Detail <i class="fa fa-caret-right"></i>
                     </button>
                   </div>
                 </div>
               </div>
               <div class="col-4 p-0">
-                <div class="card ml-2 mt-0 mb-3" style="height: 175px; border-radius: 10px; border: 1px solid black;">
-                  <div class="card-header" style="height: 55px;">
+                <div class="card card-infograph">
+                  <div class="card-header">
                     <div class="col-12 p-0">
-                      <h6 class="card-title" style="font-family: 'Monda', sans-serif; font-size: 14px; "><b><?php echo $tingkat_pengangguran_terbuka[0]['nm_indikator'] ?></b></h6>
+                      <h6 class="card-title infograph-title-text"><b>
+                          <?php echo $tingkat_pengangguran_terbuka[0]['nm_indikator'] ?>
+                        </b></h6>
                       <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
                     </div>
                   </div>
-                  <div class="card-body" style="padding: 0.75rem; height: 200px;">
+                  <div class="card-body">
                     <div class="row">
-                      <div class="col-9" style="align-self: center; padding-right: 0px;">
-                        <div style="display: flex; align-items: center;">
-                          <h2 style="font-family: 'Monda', sans-serif; font-size: 11px;"><b>(<?php echo $tingkat_pengangguran_terbuka[0]['periode'] ?> - <?php echo $tingkat_pengangguran_terbuka[0]['tahun'] ?>):</b><?php echo $tingkat_pengangguran_terbuka[0]['nilai'] ?><?php echo $tingkat_pengangguran_terbuka[0]['satuan'] ?> </h2>
+                      <div class="col-9 ">
+                        <div class="infograph-body-text">
+                          <p><b>Tahun (periode) :
+                              <!-- <?php echo $tingkat_pengangguran_terbuka[0]['periode'] ?> - -->
+                              <?php echo $tingkat_pengangguran_terbuka[0]['tahun'] . ' (' . $tingkat_pengangguran_terbuka[0]['periode'] . ')' ?>:
+                            </b>
+                            <?php echo $tingkat_pengangguran_terbuka[0]['nilai'] . $tingkat_pengangguran_terbuka[0]['satuan'] ?>
+                          </p>
 
                           <?php if ($tingkat_pengangguran_terbuka[0]['jenis'] == 'positif') { ?>
                             <?php if ($tingkat_pengangguran_terbuka[0]['nilai'] >= $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                    title="Naik <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } elseif ($tingkat_pengangguran_terbuka[0]['nilai'] < $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                              <h6><span class="badge badge-danger mx-2"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                    title="Turun <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } ?>
                           <?php } elseif ($tingkat_pengangguran_terbuka[0]['jenis'] == 'negatif') { ?>
                             <?php if ($tingkat_pengangguran_terbuka[0]['nilai'] <= $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                    title="Turun <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } elseif ($tingkat_pengangguran_terbuka[0]['nilai'] > $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                              <h6><span class="badge badge-danger mx-2"><i class="fa fa-arrow-up" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                    title="Naik <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } ?>
                           <?php } ?>
-
                         </div>
-                        <p class="card-text" style="font-family: 'Monda', sans-serif; font-size: 10px; padding-bottom: 0px; margin-bottom: 5px;"><b>(<?php echo $tingkat_pengangguran_terbuka[2]['periode'] ?> - <?php echo $tingkat_pengangguran_terbuka[2]['tahun'] ?>):</b> <?php echo $tingkat_pengangguran_terbuka[2]['nilai'] ?><?php echo $tingkat_pengangguran_terbuka[2]['satuan'] ?></p>
+                        <div class="infograph-body-text">
+                          <p><b>Tahun (periode) :
+                              <!-- <?php echo $tingkat_pengangguran_terbuka[2]['periode'] ?> - -->
+                              <?php echo $tingkat_pengangguran_terbuka[2]['tahun'] . ' (' . $tingkat_pengangguran_terbuka[2]['periode'] . ')' ?>:
+                            </b>
+                            <?php echo $tingkat_pengangguran_terbuka[2]['nilai'] . $tingkat_pengangguran_terbuka[2]['satuan'] ?>
+
+                          </p>
+                        </div>
                       </div>
-                      <div class="col-3" style="padding-left: 0px; text-align: right;">
-                        <img class="w-100" src="<?= base_url(); ?>assets/images/img/icon_pemantauan/tingkat_pengangguran_terbuka.jpg" alt="Tingkat Pengangguran Terbuka" />
+                      <div class="col-3"> <!-- Hide on screens smaller than md -->
+                        <img class="w-100"
+                          src="<?= base_url(); ?>assets/images/img/icon_pemantauan/tingkat_pengangguran_terbuka.jpg"
+                          alt="Tingkat Pengangguran Terbuka" />
                       </div>
                     </div>
                   </div>
                   <div class="card-footer pt-0">
-                    <button type="button" style="padding: 0.5% 10%;" class="button-read-more btn-read-more-article" onclick="openDetailPage('tingkat_pengangguran_terbuka', 'nasional')">
-                        Detail <i class="fa fa-caret-right"></i>
+                    <button type="button" class="button-detail-infograph"
+                      onclick="openDetailPage('tingkat_pengangguran_terbuka', 'nasional')">
+                      Detail <i class="fa fa-caret-right"></i>
                     </button>
                   </div>
                 </div>
               </div>
               <div class="col-4 p-0">
-                <div class="card ml-2 mt-0 mb-3" style="height: 175px; border-radius: 10px; border: 1px solid black;">
-                  <div class="card-header" style="height: 55px;">
+                <div class="card card-infograph">
+                  <div class=" card-header">
                     <div class="col-12 p-0">
-                      <h6 class="card-title" style="font-family: 'Monda', sans-serif; font-size: 14px; "><b><?php echo $tingkat_kemiskinan[0]['nm_indikator'] ?></b></h6>
+                      <h6 class="card-title infograph-title-text"><b>
+                          <?php echo $tingkat_kemiskinan[0]['nm_indikator'] ?>
+                        </b></h6>
                       <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
                     </div>
                   </div>
-                  <div class="card-body" style="padding: 0.75rem; height: 200px;">
+                  <div class="card-body">
                     <div class="row">
-                      <div class="col-8" style="align-self: center; padding-right: 0px;">
-                        <div style="display: flex; align-items: center;">
-                          <h2 style="font-family: 'Monda', sans-serif; font-size: 11px;"><b>(<?php echo $tingkat_kemiskinan[0]['periode'] ?> - <?php echo $tingkat_kemiskinan[0]['tahun'] ?>):</b><?php echo $tingkat_kemiskinan[0]['nilai'] ?><?php echo $tingkat_kemiskinan[0]['satuan'] ?> </h2>
+                      <div class="col-8">
+                        <div class="infograph-body-text">
+                          <p><b>Tahun (periode) :
+                              <!-- <?php echo $tingkat_kemiskinan[0]['periode'] ?> - -->
+                              <?php echo $tingkat_kemiskinan[0]['tahun'] . ' (' . $tingkat_kemiskinan[0]['periode'] . ')' ?>:
+                            </b>
+                            <?php echo $tingkat_kemiskinan[0]['nilai'] . $tingkat_kemiskinan[0]['satuan'] ?>
+
+                          </p>
 
                           <?php if ($tingkat_kemiskinan[0]['jenis'] == 'positif') { ?>
                             <?php if ($tingkat_kemiskinan[0]['nilai'] >= $tingkat_kemiskinan[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                    title="Naik <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } elseif ($tingkat_kemiskinan[0]['nilai'] < $tingkat_kemiskinan[2]['nilai']) { ?>
-                              <h6><span class="badge badge-danger mx-2"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                    title="Turun <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } ?>
                           <?php } elseif ($tingkat_kemiskinan[0]['jenis'] == 'negatif') { ?>
                             <?php if ($tingkat_kemiskinan[0]['nilai'] <= $tingkat_kemiskinan[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                    title="Turun <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } elseif ($tingkat_kemiskinan[0]['nilai'] > $tingkat_kemiskinan[2]['nilai']) { ?>
-                              <h6><span class="badge badge-danger mx-2"><i class="fa fa-arrow-up" aria-hidden="true"></i></span></h6>
+                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                    title="Naik <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
+                              </h6>
                             <?php } ?>
                           <?php } ?>
 
                         </div>
-                        <p class="card-text" style="font-family: 'Monda', sans-serif; font-size: 10px; padding-bottom: 0px; margin-bottom: 5px;"><b>(<?php echo $tingkat_kemiskinan[2]['periode'] ?> - <?php echo $tingkat_kemiskinan[2]['tahun'] ?>):</b> <?php echo $tingkat_kemiskinan[2]['nilai'] ?><?php echo $tingkat_kemiskinan[2]['satuan'] ?></p>
+                        <div class="infograph-body-text">
+                          <p>
+                            <b>Tahun (periode) :
+                              <!-- <?php echo $tingkat_kemiskinan[2]['periode'] ?> - -->
+                              <?php echo $tingkat_kemiskinan[2]['tahun'] . ' (' . $tingkat_kemiskinan[2]['periode'] . ')' ?>:
+                            </b>
+                            <?php echo $tingkat_kemiskinan[2]['nilai'] . $tingkat_kemiskinan[2]['satuan'] ?>
+                          </p>
+                        </div>
                       </div>
-                      <div class="col-4" style="padding-left: 0px; text-align: right;">
-                        <img class="w-100" src="<?= base_url(); ?>assets/images/img/icon_pemantauan/tingkat_kemiskinan.jpg" alt="Tingkat Kemiskinan" />
+                      <div class="col-4">
+                        <img class="w-100"
+                          src="<?= base_url(); ?>assets/images/img/icon_pemantauan/tingkat_kemiskinan.jpg"
+                          alt="Tingkat Kemiskinan" />
                       </div>
                     </div>
                   </div>
                   <div class="card-footer pt-0">
-                    <button type="button" style="padding: 0.5% 10%;" class="button-read-more btn-read-more-article" onclick="openDetailPage('tingkat_kemiskinan', 'nasional')">
-                        Detail <i class="fa fa-caret-right"></i>
+                    <button type="button" class="button-detail-infograph"
+                      onclick="openDetailPage('tingkat_kemiskinan', 'nasional')">
+                      Detail <i class="fa fa-caret-right"></i>
                     </button>
                   </div>
                 </div>
@@ -283,29 +371,50 @@
                   </div> -->
 
                     <div class="card img-publication-box" style="max-width:fit-content;" title="<?php echo $list->name ?>">
-                      <span class="badge badge-info" style="position: absolute; margin: 10px; right: 0;">Page Hint: <?php echo $list->sum_of_log ?></span>
-                      <img class="card-img-top img-publication p-1" src="<?= base_url(); ?>assets/file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->title_picture ?>" alt="<?php echo $list->name ?>">
+                      <span class="badge badge-info" style="position: absolute; margin: 10px; right: 0;">Page Hint:
+                        <?php echo $list->sum_of_log ?>
+                      </span>
+                      <img class="card-img-top img-publication p-1"
+                        src="<?= base_url(); ?>assets/file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->title_picture ?>"
+                        alt="<?php echo $list->name ?>">
                       <div class="card-body p-2">
-                        <p class="card-text"><?php echo (strlen($list->name) > 26) ? substr($list->name, 0, 23) . '...' : $list->name ?></p>
+                        <p class="card-text">
+                          <?php echo (strlen($list->name) > 26) ? substr($list->name, 0, 23) . '...' : $list->name ?>
+                        </p>
 
                       </div>
                       <!-- <a href="<?= base_url(); ?>assets/file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file ?>" target="_blank" rel="noopener" class="d-flex justify-content-center"> -->
                       <!-- <a href="<?= base_url(); ?>file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file; ?>" target="_blank" rel="noopener" class="d-flex justify-content-center"> -->
                       <!-- <a href="https://online.flippingbook.com/view/617112841/" target="_blank" rel="noopener" class="d-flex justify-content-center"> -->
                       <?php if ($list->name == 'Knowledge Sharing Pembangunan Daerah 2018') { ?>
-                        <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
-                        <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>" data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/ghjy/" data-width="900" data-height="500" data-title="Knowledge Sharing Pembangunan Daerah 2018">
+                        <script
+                          src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+                        <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>"
+                          data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/ghjy/" data-width="900"
+                          data-height="500" data-title="Knowledge Sharing Pembangunan Daerah 2018">
                         <?php } else if ($list->name == 'Prosiding Knowledge Sharing 2018') { ?>
-                          <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
-                          <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>" data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/qrsg/" data-width="900" data-height="500" data-title="Prosiding Knowledge Sharing 2018">
+                            <script
+                              src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+                            <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>"
+                              data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/qrsg/"
+                              data-width="900" data-height="500" data-title="Prosiding Knowledge Sharing 2018">
                           <?php } else if ($list->name == 'Prosiding Knowledge Sharing 2019') { ?>
-                            <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
-                            <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>" data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/ksbx/" data-width="900" data-height="500" data-title="Prosiding Knowledge Sharing 2019">
+                                <script
+                                  src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+                                <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>"
+                                  data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/ksbx/"
+                                  data-width="900" data-height="500" data-title="Prosiding Knowledge Sharing 2019">
                             <?php } else if ($list->name == 'Knowledge Sharing Pembangunan Daerah 2019 - 2020') { ?>
-                              <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
-                              <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>" data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/kvbv/" data-width="900" data-height="500" data-title="Knowledge Sharing Pembangunan Daerah 2019 - 2020">
+                                    <script
+                                      src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+                                    <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>"
+                                      data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/kvbv/"
+                                      data-width="900" data-height="500"
+                                      data-title="Knowledge Sharing Pembangunan Daerah 2019 - 2020">
                               <?php } else { ?>
-                                <a href="<?= base_url(); ?>file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file; ?>" data-id="<?php echo $list->id ?>" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
+                                      <a href="<?= base_url(); ?>file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file; ?>"
+                                        data-id="<?php echo $list->id ?>" target="_blank" rel="noopener"
+                                        class="d-flex justify-content-center btn-read-publication">
                                 <?php } ?>
                                 <!-- <img
                               src="<?= base_url(); ?>assets/images/img/see_more.png"
@@ -315,15 +424,22 @@
                               width="70"
                           /> -->
                                 <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                                <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="morph" colors="primary:#000000,secondary:#000000" style="width:250px;height:250px">
+                                <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="morph"
+                                  colors="primary:#000000,secondary:#000000" style="width:250px;height:250px">
                                 </lord-icon>
-                                </a>
-                                <!-- <script async defer src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=617112841"></script> -->
+                              </a>
+                              <!-- <script async defer src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=617112841"></script> -->
                     </div>
-                    <a type="button" style="display: flex; justify-content: center; align-self: center;" href="<?= base_url(); ?>assets/file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file; ?>" class="btn-download-publication" data-id="<?php echo $list->id ?>" download="<?php echo $list->file; ?>">
+                    <a type="button" style="display: flex; justify-content: center; align-self: center;"
+                      href="<?= base_url(); ?>assets/file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file; ?>"
+                      class="btn-download-publication" data-id="<?php echo $list->id ?>"
+                      download="<?php echo $list->file; ?>">
                       <!-- <i class="fa fa-arrow-circle-down" style="align-self: center; margin-right: 5px"></i>  -->
                       Unduh
-                      <span class="badge badge-light page-hint-unduh-publikasi" style="font-size: 0.6rem; padding: 0.10em; align-self: center; margin-left: 4px;"><?php echo $list->sum_of_download ?></span>
+                      <span class="badge badge-light page-hint-unduh-publikasi"
+                        style="font-size: 0.6rem; padding: 0.10em; align-self: center; margin-left: 4px;">
+                        <?php echo $list->sum_of_download ?>
+                      </span>
                     </a>
                   </div>
                 <?php } ?>
@@ -344,10 +460,11 @@
             <div class="row">
               <div class="col-12 col-md-6 col-lg-12 my-1 rounded-3">
                 <a href="<?= base_url(); ?>kegiatan/penghargaan" style="text-decoration: none;">
-                  <div class="card card-activity d-flex">
+                  <div class="card card-activity">
                     <div class="row">
                       <div class="col-4 box-icon-activity">
-                        <img class="img-fluid mb-3 w-100" src="<?= base_url(); ?>assets/images/img/logo-kegiatan/ppd-min.png" alt="card image" />
+                        <img class="img-fluid mb-3 w-100"
+                          src="<?= base_url(); ?>assets/images/img/logo-kegiatan/ppd-min.png" alt="card image" />
                       </div>
                       <div class="col-8 box-text-activity">
                         <div class="col">
@@ -362,10 +479,11 @@
               </div>
               <div class="col-12 col-md-6 col-lg-12 my-1 rounded-3">
                 <a href="<?= base_url(); ?>kegiatan/penghargaan" style="text-decoration: none;">
-                  <div class="card card-activity d-flex">
+                  <div class="card card-activity">
                     <div class="row">
                       <div class="col-4 box-icon-activity">
-                        <img class="img-fluid mb-3 w-100" src="<?= base_url(); ?>assets/images/img/logo-kegiatan/epd-min.png" alt="card image" />
+                        <img class="img-fluid mb-3 w-100"
+                          src="<?= base_url(); ?>assets/images/img/logo-kegiatan/epd-min.png" alt="card image" />
                       </div>
                       <div class="col-8 box-text-activity">
                         <div class="box-img-activity col">
@@ -380,10 +498,12 @@
               </div>
               <div class="col-12 col-md-6 col-lg-12 my-1 rounded-3">
                 <a href="<?= base_url(); ?>kegiatan/penghargaan" style="text-decoration: none;">
-                  <div class="card card-activity d-flex">
+                  <div class="card card-activity">
                     <div class="row">
                       <div class="col-4 box-icon-activity">
-                        <img class="img-fluid mb-3 w-100" src="<?= base_url(); ?>assets/images/img/logo-kegiatan/koordinasi_pembangunan-min.png" alt="card image" />
+                        <img class="img-fluid mb-3 w-100"
+                          src="<?= base_url(); ?>assets/images/img/logo-kegiatan/koordinasi_pembangunan-min.png"
+                          alt="card image" />
                       </div>
                       <div class="col-8 box-text-activity">
                         <div class="box-img-activity col">
@@ -422,11 +542,13 @@
             <hr />
             <div class="card card-application my-3">
               <div class="img-application">
-                <img src="<?= base_url(); ?>assets/images/img/penilaian_ppd.png" class="card-img-top" alt="Aplikasi Penilaian PPD" />
+                <img src="<?= base_url(); ?>assets/images/img/penilaian_ppd.png" class="card-img-top"
+                  alt="Aplikasi Penilaian PPD" />
                 <div class="card-body">
                   <p class="card-text text-center">LOGIN SISTEM PENILAIAN PPD</p>
                 </div>
-                <a href="https://peppd.bappenas.go.id/jumper_ppd/" target="_blank" rel="noopener" class="d-flex justify-content-center">
+                <a href="https://peppd.bappenas.go.id/jumper_ppd/" target="_blank" rel="noopener"
+                  class="d-flex justify-content-center">
                   <!-- <img
                       class="align-self-center"
                       src="<?= base_url(); ?>assets/images/img/External_link_font_awesome.png"
@@ -435,18 +557,21 @@
                       width="100"
                     /> -->
                   <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                  <lord-icon src="https://cdn.lordicon.com/udwhdpod.json" trigger="morph" colors="primary:#121331,secondary:#08a88a" style="width:180px;height:180px">
+                  <lord-icon src="https://cdn.lordicon.com/udwhdpod.json" trigger="morph"
+                    colors="primary:#121331,secondary:#08a88a" style="width:180px;height:180px">
                   </lord-icon>
                 </a>
               </div>
             </div>
             <div class="card card-application my-3">
               <div class="img-application">
-                <img src="<?= base_url(); ?>assets/images/img/aplikasi_pemantauan.png" class="card-img-top" alt="Aplikasi Pemantauan" />
+                <img src="<?= base_url(); ?>assets/images/img/aplikasi_pemantauan.png" class="card-img-top"
+                  alt="Aplikasi Pemantauan" />
                 <div class="card-body">
                   <p class="card-text text-center">LOGIN SISTEM PEMANTAUAN</p>
                 </div>
-                <a href="https://peppd.bappenas.go.id/pemantauan/" target="_blank" rel="noopener" class="d-flex justify-content-center">
+                <a href="https://peppd.bappenas.go.id/pemantauan/" target="_blank" rel="noopener"
+                  class="d-flex justify-content-center">
                   <!-- <img
                       class="align-self-center"
                       src="<?= base_url(); ?>assets/images/img/External_link_font_awesome.png"
@@ -455,7 +580,8 @@
                       width="100"
                     /> -->
                   <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                  <lord-icon src="https://cdn.lordicon.com/udwhdpod.json" trigger="morph" colors="primary:#121331,secondary:#08a88a" style="width:180px;height:180px">
+                  <lord-icon src="https://cdn.lordicon.com/udwhdpod.json" trigger="morph"
+                    colors="primary:#121331,secondary:#08a88a" style="width:180px;height:180px">
                   </lord-icon>
                 </a>
               </div>
@@ -470,8 +596,10 @@
             Hubungi Kami
             <hr />
             <div class="card my-3">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcACkyqgiSTD7QrSYHBXxg47xwenTZfi7ofACM598Kjg8Jzw/viewform?usp=pp_url" target="_blank" rel="noopener">
-                <img src="<?= base_url(); ?>assets/images/img/Contact-Centre-02.png" class="card-img-top" alt="Aplikasi Penilaian PPD" />
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcACkyqgiSTD7QrSYHBXxg47xwenTZfi7ofACM598Kjg8Jzw/viewform?usp=pp_url"
+                target="_blank" rel="noopener">
+                <img src="<?= base_url(); ?>assets/images/img/Contact-Centre-02.png" class="card-img-top"
+                  alt="Aplikasi Penilaian PPD" />
                 <div class="card-body">
                   <p class="card-text text-center">HUBUNGI KAMI</p>
                 </div>
@@ -516,10 +644,12 @@
       <!-- Section Carousel-->
       <div class="col-md-12 order-1">
         <section class="carousel">
-          <div id="carouselExampleIndicators" class="carousel slide img-thumbnail" data-ride="carousel" style="border-radius: 0">
+          <div id="carouselExampleIndicators" class="carousel slide img-thumbnail" data-ride="carousel"
+            style="border-radius: 0">
             <ol class="carousel-indicators" style="justify-content: left; margin-left: 5%;">
               <?php for ($i = 0; $i < count($carousel_content); $i++) { ?>
-                <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="<?php echo ($i == 0 ? 'active' : '') ?>"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>"
+                  class="<?php echo ($i == 0 ? 'active' : '') ?>"></li>
               <?php } ?>
             </ol>
             <div class="carousel-inner">
@@ -530,11 +660,18 @@
                       src="<?= base_url(); ?>assets/images/img/carousel/carousel_1_1min.png"
                       alt="First slide"
                     /> -->
-                  <a class="btn-read-more-article" data-id="<?php echo $carousel_content[$i][0]->id ?>" href="<?= base_url(); ?>news/<?php echo $carousel_content[$i][0]->slug ?>" target="_blank" rel="noopener">
-                    <img class="d-block w-100" style="height: 45vw;" src="<?= base_url(); ?>assets/images/summernote/<?php echo $carousel_content[$i][0]->title_picture ?>" alt="<?php echo $i ?> slide" />
-                    <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.7); right: 0!important; left: 0!important; bottom: 0!important; padding: 1% 5% 3% 5%; text-align: left;">
+                  <a class="btn-read-more-article" data-id="<?php echo $carousel_content[$i][0]->id ?>"
+                    href="<?= base_url(); ?>news/<?php echo $carousel_content[$i][0]->slug ?>" target="_blank"
+                    rel="noopener">
+                    <img class="d-block w-100" style="height: 45vw;"
+                      src="<?= base_url(); ?>assets/images/summernote/<?php echo $carousel_content[$i][0]->title_picture ?>"
+                      alt="<?php echo $i ?> slide" />
+                    <div class="carousel-caption d-none d-md-block"
+                      style="background-color: rgba(0, 0, 0, 0.7); right: 0!important; left: 0!important; bottom: 0!important; padding: 1% 5% 3% 5%; text-align: left;">
                       <!-- <h5><mark><?php echo $carousel_content[$i][0]->title ?></mark></h5> -->
-                      <p class="animate__animated animate__fadeInLeft"><strong><?php echo $carousel_content[$i][0]->title ?></strong></p>
+                      <p class="animate__animated animate__fadeInLeft"><strong>
+                          <?php echo $carousel_content[$i][0]->title ?>
+                        </strong></p>
                     </div>
                   </a>
                 </div>
@@ -567,7 +704,7 @@
       <!-- End Section Carousel -->
 
       <!-- Section News -->
-      <div class="col-md-12 order-3">
+      <div class="col-md-12 order-4">
         <section class="news">
           <a href="<?= base_url(); ?>news" style="color: black;">
             Berita
@@ -614,6 +751,207 @@
       </div>
       <!-- End Section News -->
 
+      <div class="col-md-12 order-3">
+        <section class="card-infografis">
+          <a href="<?= base_url(); ?>infograph" target="_blank" style="color: black;">
+            Infografis
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+          </a>
+          <hr />
+          <div class="row row-infograph">
+            <div class="col-4 p-0">
+              <div class="card card-infograph">
+                <div class="card-header">
+                  <div class="col-12 p-0">
+                    <h6 class="card-title infograph-title-text"><b>
+                        <?php echo $pertumbuhan_ekonomi[0]['nm_indikator'] ?>
+                      </b></h6>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="infograph-body-text">
+                        <p><b>Tahun
+                            <?php echo $pertumbuhan_ekonomi[0]['tahun'] ?>:
+                          </b>
+                          <?php echo $pertumbuhan_ekonomi[0]['nilai'] . $pertumbuhan_ekonomi[0]['satuan'] ?>
+
+                        </p>
+
+                        <!-- <?php if ($pertumbuhan_ekonomi[0]['jenis'] == 'positif') { ?>
+                          <?php if ($pertumbuhan_ekonomi[0]['nilai'] >= $pertumbuhan_ekonomi[1]['nilai']) { ?>
+                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                  title="Naik <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] < $pertumbuhan_ekonomi[2]['nilai']) { ?>
+                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                  title="Turun <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } ?>
+                        <?php } elseif ($pertumbuhan_ekonomi[0]['jenis'] == 'negatif') { ?>
+                          <?php if ($pertumbuhan_ekonomi[0]['nilai'] <= $pertumbuhan_ekonomi[2]['nilai']) { ?>
+                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                  title="Turun <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] > $pertumbuhan_ekonomi[2]['nilai']) { ?>
+                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                  title="Naik <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } ?>
+                        <?php } ?> -->
+                      </div>
+                      <div class="infograph-body-text">
+                        <p>
+                          <b>Tahun
+                            <?php echo $pertumbuhan_ekonomi[1]['tahun'] ?>:
+                          </b>
+                          <?php echo $pertumbuhan_ekonomi[1]['nilai'] . $pertumbuhan_ekonomi[1]['satuan'] ?>
+
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer pt-0">
+                  <button type="button" class="button-detail-infograph"
+                    onclick="openDetailPage('pertumbuhan_ekonomi', 'nasional')">
+                    Detail <i class="fa fa-caret-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 p-0">
+              <div class="card card-infograph">
+                <div class="card-header">
+                  <div class="col-12 p-0">
+                    <h6 class="card-title infograph-title-text"><b>
+                        <?php echo $tingkat_pengangguran_terbuka[0]['nm_indikator'] ?>
+                      </b></h6>
+                    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12 ">
+                      <div class="infograph-body-text">
+                        <p><b>Tahun (periode):
+                            <!--<?php echo $tingkat_pengangguran_terbuka[2]['periode'] ?>-->
+                            <?php echo $tingkat_pengangguran_terbuka[0]['tahun'] . ' (' . $tingkat_pengangguran_terbuka[0]['periode'] . ')' ?>:
+                          </b>
+                          <?php echo $tingkat_pengangguran_terbuka[0]['nilai'] . $tingkat_pengangguran_terbuka[0]['satuan'] ?>
+                        </p>
+
+                        <!-- <?php if ($tingkat_pengangguran_terbuka[0]['jenis'] == 'positif') { ?>
+                          <?php if ($tingkat_pengangguran_terbuka[0]['nilai'] >= $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
+                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                  title="Naik <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } elseif ($tingkat_pengangguran_terbuka[0]['nilai'] < $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
+                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                  title="Turun <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } ?>
+                        <?php } elseif ($tingkat_pengangguran_terbuka[0]['jenis'] == 'negatif') { ?>
+                          <?php if ($tingkat_pengangguran_terbuka[0]['nilai'] <= $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
+                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                  title="Turun <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } elseif ($tingkat_pengangguran_terbuka[0]['nilai'] > $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
+                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                  title="Naik <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } ?>
+                        <?php } ?> -->
+                      </div>
+                      <div class="infograph-body-text">
+                        <p><b>Tahun (periode):
+                            <!-- <?php echo $tingkat_pengangguran_terbuka[2]['periode'] ?> -->
+                            <?php echo $tingkat_pengangguran_terbuka[2]['tahun'] . ' (' . $tingkat_pengangguran_terbuka[2]['periode'] . ')' ?>:
+                          </b>
+                          <?php echo $tingkat_pengangguran_terbuka[2]['nilai'] . $tingkat_pengangguran_terbuka[2]['satuan'] ?>
+
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer pt-0">
+                  <button type="button" class="button-detail-infograph"
+                    onclick="openDetailPage('tingkat_pengangguran_terbuka', 'nasional')">
+                    Detail <i class="fa fa-caret-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 p-0">
+              <div class="card card-infograph">
+                <div class=" card-header">
+                  <div class="col-12 p-0">
+                    <h6 class="card-title infograph-title-text"><b>
+                        <?php echo $tingkat_kemiskinan[0]['nm_indikator'] ?>
+                      </b></h6>
+                    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="infograph-body-text">
+                        <p><b>Tahun (periode):
+                            <!-- <?php echo $tingkat_kemiskinan[0]['periode'] ?> - -->
+                            <?php echo $tingkat_kemiskinan[0]['tahun'] . ' (' . $tingkat_kemiskinan[0]['periode'] . ')' ?>:
+                          </b>
+                          <?php echo $tingkat_kemiskinan[0]['nilai'] . $tingkat_kemiskinan[0]['satuan'] ?>
+                        </p>
+
+                        <!-- <?php if ($tingkat_kemiskinan[0]['jenis'] == 'positif') { ?>
+                          <?php if ($tingkat_kemiskinan[0]['nilai'] >= $tingkat_kemiskinan[2]['nilai']) { ?>
+                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                  title="Naik <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } elseif ($tingkat_kemiskinan[0]['nilai'] < $tingkat_kemiskinan[2]['nilai']) { ?>
+                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                  title="Turun <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } ?>
+                        <?php } elseif ($tingkat_kemiskinan[0]['jenis'] == 'negatif') { ?>
+                          <?php if ($tingkat_kemiskinan[0]['nilai'] <= $tingkat_kemiskinan[2]['nilai']) { ?>
+                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                  title="Turun <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } elseif ($tingkat_kemiskinan[0]['nilai'] > $tingkat_kemiskinan[2]['nilai']) { ?>
+                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                  title="Naik <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
+                            </h6>
+                          <?php } ?>
+                        <?php } ?> -->
+
+                      </div>
+                      <div class="infograph-body-text">
+                        <p>
+                          <b>Tahun (periode):
+                            <!-- <?php echo $tingkat_kemiskinan[2]['periode'] ?> - -->
+                            <?php echo $tingkat_kemiskinan[2]['tahun'] . ' (' . $tingkat_kemiskinan[2]['periode'] . ')' ?>:
+                          </b>
+                          <?php echo $tingkat_kemiskinan[2]['nilai'] . $tingkat_kemiskinan[2]['satuan'] ?>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer pt-0">
+                  <button type="button" class="button-detail-infograph"
+                    onclick="openDetailPage('tingkat_kemiskinan', 'nasional')">
+                    Detail <i class="fa fa-caret-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
       <!-- Section Publication -->
       <div class="col-md-12 order-5">
         <section class="publication">
@@ -645,27 +983,45 @@
                   </div> -->
 
                 <div class="card img-publication-box" style="max-width:fit-content;" title="<?php echo $list->name ?>">
-                  <img class="card-img-top img-publication p-1" src="<?= base_url(); ?>assets/file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->title_picture ?>" alt="<?php echo $list->name ?>">
+                  <img class="card-img-top img-publication p-1"
+                    src="<?= base_url(); ?>assets/file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->title_picture ?>"
+                    alt="<?php echo $list->name ?>">
                   <div class="card-body p-2">
-                    <p class="card-text"><?php echo $list->name ?></p>
+                    <p class="card-text">
+                      <?php echo $list->name ?>
+                    </p>
                   </div>
                   <!-- <a href="<?= base_url(); ?>assets/file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file ?>" target="_blank" rel="noopener" class="d-flex justify-content-center"> -->
                   <!-- <a href="<?= base_url(); ?>file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file; ?>" target="_blank" rel="noopener" class="d-flex justify-content-center"> -->
                   <!-- <a href="https://online.flippingbook.com/view/617112841/" target="_blank" rel="noopener" class="d-flex justify-content-center"> -->
                   <?php if ($list->name == 'Knowledge Sharing Pembangunan Daerah 2018') { ?>
                     <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
-                    <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>" data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/ghjy/" data-width="900" data-height="500" data-title="Knowledge Sharing Pembangunan Daerah 2018">
+                    <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>"
+                      data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/ghjy/" data-width="900"
+                      data-height="500" data-title="Knowledge Sharing Pembangunan Daerah 2018">
                     <?php } else if ($list->name == 'Prosiding Knowledge Sharing 2018') { ?>
-                      <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
-                      <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>" data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/qrsg/" data-width="900" data-height="500" data-title="Prosiding Knowledge Sharing 2018">
+                        <script
+                          src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+                        <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>"
+                          data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/qrsg/" data-width="900"
+                          data-height="500" data-title="Prosiding Knowledge Sharing 2018">
                       <?php } else if ($list->name == 'Prosiding Knowledge Sharing 2019') { ?>
-                        <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
-                        <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>" data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/ksbx/" data-width="900" data-height="500" data-title="Prosiding Knowledge Sharing 2019">
+                            <script
+                              src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+                            <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>"
+                              data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/ksbx/"
+                              data-width="900" data-height="500" data-title="Prosiding Knowledge Sharing 2019">
                         <?php } else if ($list->name == 'Knowledge Sharing Pembangunan Daerah 2019 - 2020') { ?>
-                          <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
-                          <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>" data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/kvbv/" data-width="900" data-height="500" data-title="Knowledge Sharing Pembangunan Daerah 2019 - 2020">
+                                <script
+                                  src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+                                <a class="d-flex justify-content-center btn-read-publication" data-id="<?php echo $list->id ?>"
+                                  data-rel="fh5-light-box-demo" data-href="https://online.fliphtml5.com/dmeid/kvbv/"
+                                  data-width="900" data-height="500"
+                                  data-title="Knowledge Sharing Pembangunan Daerah 2019 - 2020">
                           <?php } else { ?>
-                            <a href="<?= base_url(); ?>file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file; ?>" data-id="<?php echo $list->id ?>" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
+                                  <a href="<?= base_url(); ?>file_publication/<?php echo str_replace(" ", "-", $list->name); ?>/<?php echo $list->file; ?>"
+                                    data-id="<?php echo $list->id ?>" target="_blank" rel="noopener"
+                                    class="d-flex justify-content-center btn-read-publication">
                             <?php } ?>
                             <!-- <img
                               src="<?= base_url(); ?>assets/images/img/see_more.png"
@@ -675,10 +1031,11 @@
                               width="70"
                           /> -->
                             <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="morph" colors="primary:#000000,secondary:#000000" style="width:250px;height:250px">
+                            <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="morph"
+                              colors="primary:#000000,secondary:#000000" style="width:250px;height:250px">
                             </lord-icon>
-                            </a>
-                            <!-- <script async defer src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=617112841"></script> -->
+                          </a>
+                          <!-- <script async defer src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=617112841"></script> -->
                 </div>
 
               </div>
@@ -699,7 +1056,8 @@
                 <div class="card card-activity">
                   <div class="card-body">
                     <div class="box-img-activity col d-flex justify-content-center">
-                      <img class="img-fluid mb-3 w-50" src="<?= base_url(); ?>assets/images/img/logo-kegiatan/ppd-min.png" alt="card image" />
+                      <img class="img-fluid mb-3 w-50"
+                        src="<?= base_url(); ?>assets/images/img/logo-kegiatan/ppd-min.png" alt="card image" />
                     </div>
                     <p class="card-text text-center text-activity">
                       PENGHARGAAN PEMBANGUNAN DAERAH
@@ -713,7 +1071,8 @@
                 <div class="card card-activity">
                   <div class="card-body">
                     <div class="box-img-activity col d-flex justify-content-center">
-                      <img class="img-fluid mb-3 w-50" src="<?= base_url(); ?>assets/images/img/logo-kegiatan/pemantauan-min.png" alt="card image" />
+                      <img class="img-fluid mb-3 w-50"
+                        src="<?= base_url(); ?>assets/images/img/logo-kegiatan/pemantauan-min.png" alt="card image" />
                     </div>
                     <p class="card-text text-center text-activity">
                       PEMANTAUAN PEMBANGUNAN DAERAH
@@ -727,7 +1086,8 @@
                 <div class="card card-activity">
                   <div class="card-body">
                     <div class="box-img-activity col d-flex justify-content-center">
-                      <img class="img-fluid mb-3 w-50" src="<?= base_url(); ?>assets/images/img/logo-kegiatan/epd-min.png" alt="card image" />
+                      <img class="img-fluid mb-3 w-50"
+                        src="<?= base_url(); ?>assets/images/img/logo-kegiatan/epd-min.png" alt="card image" />
                     </div>
                     <p class="card-text text-center text-activity">
                       EVALUASI PEMBANGUNAN DAERAH
@@ -741,7 +1101,9 @@
                 <div class="card card-activity">
                   <div class="card-body">
                     <div class="box-img-activity col d-flex justify-content-center">
-                      <img class="img-fluid mb-3 w-50" src="<?= base_url(); ?>assets/images/img/logo-kegiatan/koordinasi_pembangunan-min.png" alt="card image" />
+                      <img class="img-fluid mb-3 w-50"
+                        src="<?= base_url(); ?>assets/images/img/logo-kegiatan/koordinasi_pembangunan-min.png"
+                        alt="card image" />
                     </div>
                     <p class="card-text text-center text-activity">
                       KOORDINASI PEMBANGUNAN
@@ -755,30 +1117,38 @@
       </div>
       <!-- End Section Activity -->
 
+
+
       <!-- Section Application -->
-      <div class="col-md-12 order-4">
+      <div class="col-md-12 order-6">
         <section class="application">
           Aplikasi
           <hr />
           <div class="card card-application my-3">
             <div class="img-application">
-              <img src="<?= base_url(); ?>assets/images/img/penilaian_ppd.png" class="card-img-top" alt="Aplikasi Penilaian PPD" />
+              <img src="<?= base_url(); ?>assets/images/img/penilaian_ppd.png" class="card-img-top"
+                alt="Aplikasi Penilaian PPD" />
               <div class="card-body">
                 <p class="card-text text-center">LOGIN SISTEM PENILAIAN PPD</p>
               </div>
-              <a href="https://peppd.bappenas.go.id/jumper_ppd/" target="_blank" rel="noopener" class="d-flex justify-content-center">
-                <img class="align-self-center" src="<?= base_url(); ?>assets/images/img/External_link_font_awesome.png" alt="Login Sistem Penilaian PPD" height="100" width="100" />
+              <a href="https://peppd.bappenas.go.id/jumper_ppd/" target="_blank" rel="noopener"
+                class="d-flex justify-content-center">
+                <img class="align-self-center" src="<?= base_url(); ?>assets/images/img/External_link_font_awesome.png"
+                  alt="Login Sistem Penilaian PPD" height="100" width="100" />
               </a>
             </div>
           </div>
           <div class="card card-application my-3">
             <div class="img-application">
-              <img src="<?= base_url(); ?>assets/images/img/aplikasi_pemantauan.png" class="card-img-top" alt="Login Sistem Pemantauan" />
+              <img src="<?= base_url(); ?>assets/images/img/aplikasi_pemantauan.png" class="card-img-top"
+                alt="Login Sistem Pemantauan" />
               <div class="card-body">
                 <p class="card-text text-center">LOGIN SISTEM PEMANTAUAN</p>
               </div>
-              <a href="https://peppd.bappenas.go.id/pemantauan/" target="_blank" rel="noopener" class="d-flex justify-content-center">
-                <img class="align-self-center" src="<?= base_url(); ?>assets/images/img/External_link_font_awesome.png" alt="Login Sistem Pemantauan" height="100" width="100" />
+              <a href="https://peppd.bappenas.go.id/pemantauan/" target="_blank" rel="noopener"
+                class="d-flex justify-content-center">
+                <img class="align-self-center" src="<?= base_url(); ?>assets/images/img/External_link_font_awesome.png"
+                  alt="Login Sistem Pemantauan" height="100" width="100" />
               </a>
             </div>
           </div>
@@ -787,13 +1157,15 @@
       <!-- End Section Application -->
 
       <!-- Section Contact Us -->
-      <div class="col-md-12 order-6">
+      <div class="col-md-12 order-7">
         <section class="contact-us">
           Hubungi Kami
           <hr />
           <div class="card my-3">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcACkyqgiSTD7QrSYHBXxg47xwenTZfi7ofACM598Kjg8Jzw/viewform?usp=pp_url" target="_blank" rel="noopener">
-              <img src="<?= base_url(); ?>assets/images/img/Contact-Centre-02.png" class="card-img-top" alt="Aplikasi Penilaian PPD" />
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcACkyqgiSTD7QrSYHBXxg47xwenTZfi7ofACM598Kjg8Jzw/viewform?usp=pp_url"
+              target="_blank" rel="noopener">
+              <img src="<?= base_url(); ?>assets/images/img/Contact-Centre-02.png" class="card-img-top"
+                alt="Aplikasi Penilaian PPD" />
               <div class="card-body">
                 <p class="card-text text-center">HUBUNGI KAMI</p>
               </div>
@@ -832,9 +1204,9 @@
 <script>
   function openDetailPage(indikator, wilayah) {
     var postData = {
-        indikator: indikator,
-        wilayah: wilayah
-        // Add more data as needed
+      indikator: indikator,
+      wilayah: wilayah
+      // Add more data as needed
     };
 
     // Create a hidden form to submit the POST data
@@ -843,28 +1215,28 @@
     form.action = '<?= base_url('test'); ?>'; // Specify the target URL here
 
     for (var key in postData) {
-        if (postData.hasOwnProperty(key)) {
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = key;
-            input.value = postData[key];
-            form.appendChild(input);
-        }
+      if (postData.hasOwnProperty(key)) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = postData[key];
+        form.appendChild(input);
+      }
     }
 
-      // Append the form to the document and submit it
-      document.body.appendChild(form);
-      form.submit();
-    }
+    // Append the form to the document and submit it
+    document.body.appendChild(form);
+    form.submit();
+  }
 
-  $(document).ready(function() {
+  $(document).ready(function () {
 
     function load_article_data(page) {
       $.ajax({
         url: "<?php echo base_url(); ?>C_pagesController/article_pagination/" + page,
         method: "GET",
         dataType: "json",
-        success: function(data) {
+        success: function (data) {
           // console.log(data.pagination_link);
           $('.list_article').html(data.list_article);
           $('.pagination_link').html(data.pagination_link);
@@ -874,14 +1246,14 @@
 
     load_article_data(1);
 
-    $(document).on("click", ".pagination li span a", function(event) {
+    $(document).on("click", ".pagination li span a", function (event) {
       $(this).append(' <i class="fa fa-spinner fa-spin icon-comment-loading"></i>');
       event.preventDefault();
       var page = $(this).data("ci-pagination-page");
       load_article_data(page);
     })
 
-    $(document).on('click', '.btn-read-more-article', function() {
+    $(document).on('click', '.btn-read-more-article', function () {
       // var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
       // var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
       var dataId = $(this).attr("data-id");
@@ -893,16 +1265,16 @@
           // [csrfName]: csrfHash,
           action: dataLog,
         },
-        success: function(result) {
+        success: function (result) {
           // console.log(result);
         },
-        error: function(result) {
+        error: function (result) {
           console.log(result);
         }
       });
     });
 
-    $(document).on('click', '.btn-download-publication', function() {
+    $(document).on('click', '.btn-download-publication', function () {
       // var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
       // var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
       var dataId = $(this).attr("data-id");
@@ -914,16 +1286,16 @@
           // [csrfName]: csrfHash,
           action: dataLog,
         },
-        success: function(result) {
+        success: function (result) {
           console.log(result);
         },
-        error: function(result) {
+        error: function (result) {
           console.log(result);
         }
       });
     });
 
-    $(document).on('click', '.btn-read-publication', function() {
+    $(document).on('click', '.btn-read-publication', function () {
       // var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
       // var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
       var dataId = $(this).attr("data-id");
@@ -935,15 +1307,15 @@
           // [csrfName]: csrfHash,
           action: dataLog,
         },
-        success: function(result) {
+        success: function (result) {
           console.log(result);
         },
-        error: function(result) {
+        error: function (result) {
           console.log(result);
         }
       });
     });
-    
+
 
     // $(document).on('load', '.list_article', function() {
     //   var imageSrc = document

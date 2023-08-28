@@ -19,7 +19,8 @@
 
   <meta charset="utf-8">
   <meta name="description" content="Website Resmi Direktorat PEPPD Kementerian PPN/Bappanes">
-  <meta name="keywords" content="PEPPD, direktorat PEPPD, Bappenas, Pemantauan Evaluasi Pengendalian Pembangunan Daerah">
+  <meta name="keywords"
+    content="PEPPD, direktorat PEPPD, Bappenas, Pemantauan Evaluasi Pengendalian Pembangunan Daerah">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Direktorat PEPPD Bappenas">
 
@@ -33,18 +34,22 @@
   </title>
 
   <!-- Bootstrap CSS -->
-  <link href="<?= base_url(); ?>assets/assets/bootstrap-4.6.0-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?= base_url(); ?>assets/assets/bootstrap-4.6.0-dist/css/bootstrap.min.css" rel="stylesheet"
+    type="text/css" />
 
   <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css" />
 
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"
+    type="text/css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500;600&family=Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500;600&family=Varela+Round&display=swap"
+    rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +75,8 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
   <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
 
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
+  <script
+    src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <!-- End Maps API -->
 
@@ -83,6 +89,55 @@
 
       .mobile {
         display: block !important;
+      }
+
+      .card-infograph {
+        margin: 0 5px 1px 2px;
+        height: 360px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .row-infograph {
+        overflow-x: none;
+        flex-wrap: nowrap;
+        font-family: 'Monda', sans-serif;
+      }
+
+      .card-infograph {
+        margin: 0 5px 3px 2px;
+        height: 225px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .infograph-title-text {
+        font-family: 'Monda', sans-serif;
+        font-size: 10px;
+        text-align: center;
+        line-height: 1;
+      }
+
+      .infograph-body-text {
+        display: flex;
+        font-size: 9px;
+        align-items: center;
+      }
+
+      .button-detail-infograph {
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        background-color: #0D4A82;
+        color: white;
+        border: 1px solid black;
+        transition: all 300ms ease;
+        padding: 0.5% 10%;
+      }
+
+      .button-detail-infograph:hover {
+        background-color: white;
+        color: black;
+        text-decoration: none;
       }
 
       .card-activity {
@@ -125,6 +180,47 @@
       }
     }
 
+    @media(min-width: 360px) {
+      .card-infograph {
+        margin: 0 5px 1px 2px;
+        height: 275px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+    }
+
+    @media(min-width: 375px) {
+      .dekstop {
+        display: none !important;
+      }
+
+      .mobile {
+        display: block !important;
+      }
+
+      .card-infograph {
+        margin: 0 5px 1px 2px;
+        height: 275px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .card-activity {
+        height: 12rem;
+        padding-top: 0px;
+      }
+
+      .text-activity {
+        font-size: 0.65rem;
+        font-weight: 600;
+      }
+
+      .img-publication {
+        height: 19rem;
+        width: 14rem;
+      }
+    }
+
     @media (min-width: 576px) {
       .dekstop {
         display: none !important;
@@ -133,6 +229,42 @@
       .mobile {
         display: block !important;
       }
+
+      .card-infograph {
+        margin: 0 5px 3px 2px;
+        height: 300px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .infograph-title-text {
+        font-family: 'Monda', sans-serif;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .infograph-body-text {
+        display: flex;
+        font-size: 13px;
+        align-items: center;
+      }
+
+      .button-detail-infograph {
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        background-color: #0D4A82;
+        color: white;
+        border: 1px solid black;
+        transition: all 300ms ease;
+        padding: 0.5% 10%;
+      }
+
+      .button-detail-infograph:hover {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+      }
+
 
       .card-activity {
         height: 13rem;
@@ -165,6 +297,54 @@
 
       .mobile {
         display: block !important;
+      }
+
+      .card-infograph {
+        margin: 0 5px 1px 2px;
+        height: 215px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .row-infograph {
+        overflow-x: none;
+        flex-wrap: nowrap;
+        font-family: 'Monda', sans-serif;
+      }
+
+      .card-infograph {
+        margin: 0 5px 3px 2px;
+        height: 280px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .infograph-title-text {
+        font-family: 'Monda', sans-serif;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .infograph-body-text {
+        display: flex;
+        font-size: 14px;
+        align-items: center;
+      }
+
+      .button-detail-infograph {
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        background-color: #0D4A82;
+        color: white;
+        border: 1px solid black;
+        transition: all 300ms ease;
+        padding: 0.5% 10%;
+      }
+
+      .button-detail-infograph:hover {
+        background-color: white;
+        color: black;
+        text-decoration: none;
       }
 
       .card-activity {
@@ -228,6 +408,48 @@
         font-size: 0.7rem;
       }
 
+      .row-infograph {
+        overflow-x: none;
+        flex-wrap: nowrap;
+        font-family: 'Monda', sans-serif;
+      }
+
+      .card-infograph {
+        margin: 0 5px 3px 2px;
+        height: 300px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .infograph-title-text {
+        font-family: 'Monda', sans-serif;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .infograph-body-text {
+        display: flex;
+        font-size: 13px;
+        align-items: center;
+      }
+
+      .button-detail-infograph {
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        background-color: #0D4A82;
+        color: white;
+        border: 1px solid black;
+        transition: all 300ms ease;
+        padding: 0.5% 10%;
+      }
+
+      .button-detail-infograph:hover {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+      }
+
+
       .card-activity {
         height: 6rem;
         padding-top: 0px;
@@ -284,6 +506,14 @@
         font-weight: 500;
       }
 
+      .card-infograph {
+        margin: 0 5px 3px 2px;
+        height: 350px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+
       .box-icon-activity {
         padding: 10px;
         padding-left: 25px;
@@ -306,6 +536,13 @@
 
       .navbar {
         font-size: 0.9rem;
+      }
+
+      .card-infograph {
+        margin: 0 5px 1px 2px;
+        height: 285px;
+        border-radius: 10px;
+        border: 1px solid black;
       }
 
       .card-activity {
@@ -368,13 +605,71 @@
       }
     }
 
-    @media (min-width: 1650px) {
+    @media(min-width: 1330px) {
+
+      .card-infograph {
+        margin: 0 5px 1px 2px;
+        height: 210px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .card-activity {
+        height: 8.5rem;
+        padding-top: 0px;
+      }
+
+      .card-infograph {
+        margin: 0 5px 3px 2px;
+        height: 250px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .text-activity {
+        margin-top: 15px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .box-icon-activity {
+        padding: 10px;
+        padding-left: 30px;
+      }
+
+      .box-text-activity {
+        padding-top: 20px;
+        padding-right: 40px;
+      }
+    }
+
+    @media (min-width: 1550px) {
+      .card-infograph {
+        margin: 0 5px 3px 2px;
+        height: 200px;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .infograph-title-text {
+        font-family: 'Monda', sans-serif;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .infograph-body-text {
+        display: flex;
+        font-size: 14px;
+        align-items: center;
+      }
+
       .card-activity {
         height: 8rem;
         padding-top: 0px;
       }
 
       .text-activity {
+        margin-top: 4px;
         font-size: 0.9rem;
         font-weight: 600;
       }
@@ -382,6 +677,28 @@
       .box-icon-activity {
         padding: 10px;
         padding-left: 60px;
+      }
+
+      .box-text-activity {
+        padding-top: 40px;
+        padding-right: 50px;
+      }
+    }
+
+    @media (min-width: 1800px) {
+      .card-activity {
+        height: 10rem;
+        padding-top: 0px;
+      }
+
+      .text-activity {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .box-icon-activity {
+        padding: 10px;
+        padding-left: 70px;
       }
 
       .box-text-activity {
@@ -698,9 +1015,17 @@
     <div class="" style="background-color: #1f3984; color: white">
       <div class="container">
         <marquee behavior="scroll" direction="left" style="font-size: 14px; font-weight: 400; white-space: nowrap;">
-          <span style="margin-right: 20%;">Direktorat Pemantauan, Evaluasi, dan Pengendalian Pembangunan Daerah&nbsp;&nbsp;&nbsp;Kementerian PPN/BAPPENAS</span>
-          <a href="<?= base_url(); ?>news/<?php echo str_replace(" ", "-", $last_article[0]->slug); ?>" target="_blank"><span style="color: chartreuse; margin-right: 20%;"><i class="fa fa-exclamation-triangle"></i> <?php echo $last_article[0]->title; ?></span></a>
-          <a href="<?= base_url(); ?>file_publication/<?php echo str_replace(" ", "-", $last_guide[0]->name); ?>/<?php echo $last_guide[0]->file; ?>" target="_blank"><span style="color: springgreen; margin-right: 20%;"><i class="fa fa-book"></i> <?php echo $last_guide[0]->name; ?></span></a>
+          <span style="margin-right: 20%;">Direktorat Pemantauan, Evaluasi, dan Pengendalian Pembangunan
+            Daerah&nbsp;&nbsp;&nbsp;Kementerian PPN/BAPPENAS</span>
+          <a href="<?= base_url(); ?>news/<?php echo str_replace(" ", "-", $last_article[0]->slug); ?>"
+            target="_blank"><span style="color: chartreuse; margin-right: 20%;"><i
+                class="fa fa-exclamation-triangle"></i>
+              <?php echo $last_article[0]->title; ?>
+            </span></a>
+          <a href="<?= base_url(); ?>file_publication/<?php echo str_replace(" ", "-", $last_guide[0]->name); ?>/<?php echo $last_guide[0]->file; ?>"
+            target="_blank"><span style="color: springgreen; margin-right: 20%;"><i class="fa fa-book"></i>
+              <?php echo $last_guide[0]->name; ?>
+            </span></a>
         </marquee>
       </div>
     </div>
@@ -709,10 +1034,14 @@
         class="navbar navbar-expand-lg navbar-light bg-light shadow px-3 bg-white rounded"
         style="background-image: url({{ asset('images/img/bappenas_banner.png') }}); background-size: cover"
       > -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow px-3 bg-white rounded" style="background-image: url('<?= base_url(); ?>assets/images/img/bappenas_banner.png'); background-size: cover">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow px-3 bg-white rounded"
+      style="background-image: url('<?= base_url(); ?>assets/images/img/bappenas_banner.png'); background-size: cover">
       <div class="container-fluid" style="width: 70%">
-        <a class="navbar-brand" href="<?= base_url(); ?>"><img src="<?= base_url(); ?>assets/images/img/logo_bappenas_8.png" alt="LOGO-BAPPENAS" class="img-responsive" height="45" /></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="<?= base_url(); ?>"><img
+            src="<?= base_url(); ?>assets/images/img/logo_bappenas_8.png" alt="LOGO-BAPPENAS" class="img-responsive"
+            height="45" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
@@ -722,7 +1051,9 @@
             <a href="<?= base_url(); ?>publication" <?php echo ($this->uri->segment(1) == 'publication' ? 'class="nav-link active"' : 'class="nav-link"'); ?>>Publikasi</a>
             <a href="<?= base_url(); ?>kegiatan" <?php echo ($this->uri->segment(1) == 'kegiatan' ? 'class="nav-link active"' : 'class="nav-link"'); ?>>Kegiatan</a>
             <a href="<?= base_url(); ?>aplikasi" <?php echo ($this->uri->segment(1) == 'aplikasi' ? 'class="nav-link active"' : 'class="nav-link"'); ?>>Aplikasi</a>
-            <a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfcACkyqgiSTD7QrSYHBXxg47xwenTZfi7ofACM598Kjg8Jzw/viewform?usp=pp_url" target="_blank" rel="noopener">Hubungi Kami</a>
+            <a class="nav-link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfcACkyqgiSTD7QrSYHBXxg47xwenTZfi7ofACM598Kjg8Jzw/viewform?usp=pp_url"
+              target="_blank" rel="noopener">Hubungi Kami</a>
             <!-- <a href="<?= base_url(); ?>karir" <?php echo ($this->uri->segment(1) == 'karir' ? 'class="nav-link active"' : 'class="nav-link"'); ?>>Karir</a> -->
           </div>
         </div>
