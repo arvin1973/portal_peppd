@@ -66,7 +66,7 @@ Last Update  : 03 July 2021 -->
                           <img class="img-fluid card-image mb-4"
                             src="<?= base_url(); ?>assets/images/img/logo-kegiatan/ppd-min.png" alt="card image" />
                         </div>
-                        <p class="card-text">
+                        <p class="card-text-activity">
                           PENGHARGAAN PEMBANGUNAN DAERAH
                         </p>
                       </div>
@@ -82,7 +82,7 @@ Last Update  : 03 July 2021 -->
                             src="<?= base_url(); ?>assets/images/img/logo-kegiatan/pemantauan-min.png"
                             alt="card image" />
                         </div>
-                        <p class="card-text">
+                        <p class="card-text-activity">
                           PEMANTAUAN PEMBANGUNAN DAERAH
                         </p>
                       </div>
@@ -97,7 +97,7 @@ Last Update  : 03 July 2021 -->
                           <img class="img-fluid card-image mb-4"
                             src="<?= base_url(); ?>assets/images/img/logo-kegiatan/epd-min.png" alt="card image" />
                         </div>
-                        <p class="card-text">
+                        <p class="card-text-activity">
                           EVALUASI PEMBANGUNAN DAERAH
                         </p>
                       </div>
@@ -113,7 +113,7 @@ Last Update  : 03 July 2021 -->
                             src="<?= base_url(); ?>assets/images/img/logo-kegiatan/koordinasi_pembangunan-min.png"
                             alt="card image" />
                         </div>
-                        <p class="card-text">
+                        <p class="card-text-activity">
                           KOORDINASI PEMBANGUNAN
                         </p>
                       </div>

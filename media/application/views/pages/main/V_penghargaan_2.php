@@ -45,65 +45,62 @@ Last Update  : 03 July 2021 -->
                                     <li>Bagi non – Pemerintah, PPD memberikan akses informasi dan keterlibatan akademisi, NGO, professional, jurnalis, dan masyarakat dalam pembangunan daerah</li>
                                 </ol>
                                 <hr />
-                                <h4>PEDOMAN PPD 2022</h4>
+                                <h4>PEDOMAN PPD 2024</h4>
                                 <div class="row">
-
+<!-- 
                                     <div class="my-2 mx-2">
                                         <div class="img-publication-box">
-                                            <img src="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_kabkota.png" class="img-thumbnail img-publication" alt="Pedoman PPD 2022 Kabupaten Kota" />
-                                            <a href="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_kabkota_update.pdf" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
-                                                <img src="<?= base_url(); ?>assets/images/img/see_more.png" alt="Download Pedoman PPD 2022 Kabupaten Kota" class="align-self-center" height="70" width="70" />
+                                            <img src="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_kabupaten_kota.png" class="img-thumbnail img-publication" alt="Pedoman Sistem PPD 2023 Kabupaten Kota" />
+                                            <a href="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_kabupaten_kota.pdf" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
+                                                <img src="<?= base_url(); ?>assets/images/img/see_more.png" alt="Download Pedoman Sistem PPD 2023 Kabupaten Kota" class="align-self-center" height="70" width="70" />
                                             </a>
                                         </div>
-                                        <a type="button" href="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_kabkota_update.pdf" class="btn-download-publication" download="Pedoman PPD 2022 Kabupaten Kota.pdf"><i class="fa fa-arrow-circle-down"></i> Unduh</a>
+                                        <a type="button" href="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_kabupaten_kota.pdf" class="btn-download-publication" download="Pedoman Sistem PPD 2023 Kabupaten Kota.pdf"><i class="fa fa-arrow-circle-down"></i> Unduh</a>
                                     </div>
 
                                     <div class="my-2 mx-2">
                                         <div class="img-publication-box">
-                                            <img src="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_provinsi.png" class="img-thumbnail img-publication" alt="Pedoman PPD 2022 Provinsi" />
-                                            <a href="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_provinsi_update.pdf" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
-                                                <img src="<?= base_url(); ?>assets/images/img/see_more.png" alt="Download Pedoman PPD 2022 Provinsi" class="align-self-center" height="70" width="70" />
+                                            <img src="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_provinsi.png" class="img-thumbnail img-publication" alt="Pedoman Sistem PPD 2023 Provinsi" />
+                                            <a href="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_provinsi.pdf" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
+                                                <img src="<?= base_url(); ?>assets/images/img/see_more.png" alt="Download Pedoman Sistem PPD 2023 Provinsi" class="align-self-center" height="70" width="70" />
                                             </a>
                                         </div>
-                                        <a type="button" href="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_provinsi_update.pdf" class="btn-download-publication" download="Pedoman PPD 2022 Kabupaten Provinsi.pdf"><i class="fa fa-arrow-circle-down"></i> Unduh</a>
+                                        <a type="button" href="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_provinsi.pdf" class="btn-download-publication" download="Pedoman Sistem PPD 2023 Provinsi.pdf"><i class="fa fa-arrow-circle-down"></i> Unduh</a>
                                     </div>
 
                                     <div class="my-2 mx-2">
                                         <div class="img-publication-box">
-                                            <img src="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_tpt.png" class="img-thumbnail img-publication" alt="Pedoman PPD 2022 TPT" />
-                                            <a href="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_tpt_update.pdf" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
-                                                <img src="<?= base_url(); ?>assets/images/img/see_more.png" alt="Download Pedoman PPD 2022 TPT" class="align-self-center" height="70" width="70" />
+                                            <img src="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_tpt.png" class="img-thumbnail img-publication" alt="Pedoman Sistem PPD 2023 TPT" />
+                                            <a href="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_tpt.pdf" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
+                                                <img src="<?= base_url(); ?>assets/images/img/see_more.png" alt="Download Pedoman Sistem PPD 2023 TPT" class="align-self-center" height="70" width="70" />
                                             </a>
                                         </div>
-                                        <a type="button" href="<?= base_url(); ?>assets/documents/pedoman/pedoman_PPD_2022_tpt_update.pdf" class="btn-download-publication" download="Pedoman PPD 2022 Kabupaten TPT.pdf"><i class="fa fa-arrow-circle-down"></i> Unduh</a>
+                                        <a type="button" href="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_tpt.pdf" class="btn-download-publication" download="Pedoman Sistem PPD 2023 TPT.pdf"><i class="fa fa-arrow-circle-down"></i> Unduh</a>
                                     </div>
+
+                                    <div class="my-2 mx-2">
+                                        <div class="img-publication-box">
+                                            <img src="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_tpi_tpu.png" class="img-thumbnail img-publication" alt="Pedoman Sistem PPD 2023 TPI TPU" />
+                                            <a href="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_tpi_tpu.pdf" target="_blank" rel="noopener" class="d-flex justify-content-center btn-read-publication">
+                                                <img src="<?= base_url(); ?>assets/images/img/see_more.png" alt="Download Pedoman Sistem PPD 2023 TPI TPU" class="align-self-center" height="70" width="70" />
+                                            </a>
+                                        </div>
+                                        <a type="button" href="<?= base_url(); ?>assets/documents/pedoman/pedoman_ppd_2023/pedoman_sistem_penilaian_tpi_tpu.pdf" class="btn-download-publication" download="Pedoman Sistem PPD 2023 TPI TPU.pdf"><i class="fa fa-arrow-circle-down"></i> Unduh</a>
+                                    </div> -->
 
                                 </div>
                                 <hr />
-                                <h4>APLIKASI PPD 2022</h4>
+                                <h4>APLIKASI PPD</h4>
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-lg-6 my-2">
                                         <div class="card card-application my-3">
                                             <div class="img-application">
-                                                <img src="<?= base_url(); ?>assets/images/img/penilaian_ppd.png" class="card-img-top" alt="Aplikasi Penilaian PPD" />
+                                                <img src="<?= base_url(); ?>assets/images/img/login_ppd_2.png" class="card-img-top" alt="Aplikasi Penilaian PPD" />
                                                 <div class="card-body">
                                                     <p class="card-text text-center" style="font-size: 0.9rem;"><b>LOGIN SISTEM PENILAIAN PPD</b></p>
                                                 </div>
                                                 <a href="https://peppd.bappenas.go.id/jumper_ppd/" target="_blank" rel="noopener" class="d-flex justify-content-center">
                                                     <img class="align-self-center" src="<?= base_url(); ?>assets/images/img/External_link_font_awesome.png" alt="Login Sistem Penilaian PPD" height="100" width="100" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-6 my-2">
-                                        <div class="card card-application my-3" style="height: 91%">
-                                            <div class="img-application">
-                                                <img src="<?= base_url(); ?>assets/images/img/aplikasi_pemantauan.png" class="card-img-top" alt="Aplikasi Pemantauan" />
-                                                <div class="card-body">
-                                                    <p class="card-text text-center" style="font-size: 0.9rem;"><b>LOGIN SISTEM PEMANTAUAN</b></p>
-                                                </div>
-                                                <a href="https://peppd.bappenas.go.id/pemantauan/" target="_blank" rel="noopener" class="d-flex justify-content-center" style="height: 104%">
-                                                    <img class="align-self-center" src="<?= base_url(); ?>assets/images/img/External_link_font_awesome.png" alt="Login Sistem Pemantauan" height="100" width="100" />
                                                 </a>
                                             </div>
                                         </div>

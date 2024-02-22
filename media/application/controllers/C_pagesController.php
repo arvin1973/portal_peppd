@@ -57,7 +57,7 @@ class C_pagesController extends CI_Controller
         $output = '';
         // melakukan perulangan data artikel untuk di tampilkan dan di tampung pada variable output 
         foreach ($list_article as $article) {
-            $output .= '<div class="card mb-3">';
+            $output .= '<a data-id="' . $article->id . '" target="_blank" rel="noopener" href="' . base_url() . 'news/' . $article->slug . '"  class="card card-article mb-3">';
             $output .= '<div class="row no-gutters">';
             $output .= '<div class="col-md-5 box-img-news" style="background: url(' . base_url() . 'assets/images/summernote/' . $article->title_picture . '); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: black;">';
             // $output .= '<img class="w-100 img-news" src="' . base_url() . 'assets/images/summernote/' . $article->title_picture . '" alt="' . $article->title . '" />';
@@ -73,14 +73,38 @@ class C_pagesController extends CI_Controller
             $output .= '</h5>';
             $output .= '<p class="card-text text-news">';
             $output .= (strlen($article->description) > 105) ? substr($article->description, 0, 101) . '...' : $article->description;
-            // $output .= '<i><a class="btn-read-more-article" data-id="'.$article->id.'" target="_blank" rel="noopener" href="'.base_url().'news/'.$article->slug.'" title="'.$article->title.'">selengkapnya</a></i>';
-            $output .= '<br/><a type="button" class="button-read-more btn-read-more-article" data-id="' . $article->id . '" target="_blank" rel="noopener" href="' . base_url() . 'news/' . $article->slug . '" title="' . $article->title . '">Selengkapnya...<i class="fa fa-align-left pl-1" aria-hidden="true"></i></a>';
+            $output .= '<br/><button type="button" class="button-read-more btn-read-more-article" data-id="' . $article->id . '" target="_blank" rel="noopener" href="' . base_url() . 'news/' . $article->slug . '" title="' . $article->title . '">Selengkapnya...<i class="fa fa-align-left pl-1" aria-hidden="true"></i></button>';
             $output .= '</p>';
             $output .= '</div>';
             $output .= '</div>';
             $output .= '</div>';
-            $output .= '</div>';
+            $output .= '</a>';
         }
+        // foreach ($list_article as $article) {
+        //     $output .= '<div class="card mb-3">';
+        //     $output .= '<div class="row no-gutters">';
+        //     $output .= '<div class="col-md-5 box-img-news" style="background: url(' . base_url() . 'assets/images/summernote/' . $article->title_picture . '); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: black;">';
+        //     // $output .= '<img class="w-100 img-news" src="' . base_url() . 'assets/images/summernote/' . $article->title_picture . '" alt="' . $article->title . '" />';
+        //     $output .= '</div>';
+        //     $output .= '<div class="col-md-7">';
+        //     $output .= '<div class="card-body">';
+        //     $output .= '<p class="card-text">';
+        //     $output .= '<small class="text-muted">' . date("j F Y", strtotime(substr($article->created_at, 0, 10))) . '</small>';
+        //     $output .= '<span class="badge badge-secondary float-right">' . $article->name . '</span>';
+        //     $output .= '</p>';
+        //     $output .= '<h5 class="card-title title-news">';
+        //     $output .= '<b>' . $article->title . '</b>';
+        //     $output .= '</h5>';
+        //     $output .= '<p class="card-text text-news">';
+        //     $output .= (strlen($article->description) > 105) ? substr($article->description, 0, 101) . '...' : $article->description;
+        //     // $output .= '<i><a class="btn-read-more-article" data-id="'.$article->id.'" target="_blank" rel="noopener" href="'.base_url().'news/'.$article->slug.'" title="'.$article->title.'">selengkapnya</a></i>';
+        //     $output .= '<br/><a type="button" class="button-read-more btn-read-more-article" data-id="' . $article->id . '" target="_blank" rel="noopener" href="' . base_url() . 'news/' . $article->slug . '" title="' . $article->title . '">Selengkapnya...<i class="fa fa-align-left pl-1" aria-hidden="true"></i></a>';
+        //     $output .= '</p>';
+        //     $output .= '</div>';
+        //     $output .= '</div>';
+        //     $output .= '</div>';
+        //     $output .= '</div>';
+        // }
 
         // inisialisasi array
         $list_article_pagination = array(
@@ -95,19 +119,46 @@ class C_pagesController extends CI_Controller
     {
         // infografis
         $db2 = $this->load->database('pemantauan', TRUE);
-        $data['pertumbuhan_ekonomi'] = $db2->query('SELECT y.*, i.nama_indikator as nm_indikator, i.jenis, i.chart, i.deskripsi FROM (SELECT * FROM nilai_indikator WHERE (id_indikator="1" AND wilayah="1000" AND periode="00") AND (id_periode, versi) IN (SELECT id_periode, MAX(versi) AS versi FROM nilai_indikator WHERE id_indikator="1" AND wilayah="1000" AND periode="00" GROUP BY id_periode) GROUP BY id_periode ORDER BY id_periode DESC) y JOIN indikator i ON y.id_indikator = i.id ORDER BY y.id_periode DESC')->result_array();
-        $data['tingkat_pengangguran_terbuka'] = $db2->query('SELECT y.*, i.nama_indikator as nm_indikator, i.jenis, i.chart, i.deskripsi FROM (SELECT * FROM nilai_indikator WHERE (id_indikator="6" AND wilayah="1000") AND (id_periode, versi) IN (SELECT id_periode, MAX(versi) AS versi FROM nilai_indikator WHERE id_indikator="6" AND wilayah="1000" GROUP BY id_periode) GROUP BY id_periode ORDER BY id_periode DESC) y JOIN indikator i ON y.id_indikator = i.id ORDER BY y.id_periode DESC')->result_array();
-        $data['tingkat_kemiskinan'] = $db2->query('SELECT y.*, i.nama_indikator as nm_indikator, i.jenis, i.chart, i.deskripsi FROM (SELECT * FROM nilai_indikator WHERE (id_indikator="36" AND wilayah="1000") AND (id_periode, versi) IN (SELECT id_periode, MAX(versi) AS versi FROM nilai_indikator WHERE id_indikator="36" AND wilayah="1000" GROUP BY id_periode) GROUP BY id_periode ORDER BY id_periode DESC) y JOIN indikator i ON y.id_indikator = i.id ORDER BY y.id_periode DESC')->result_array();
+        $data['list_indikator'] = $db2->query("SELECT * FROM `indikator` WHERE ppd=1")->result_array();
+        $ind=[];
+        foreach($data['list_indikator'] as $indikator){
+            if($indikator['id']==1){
+                $ind []= $db2->query('SELECT y.*, i.nama_indikator as nm_indikator, i.jenis, i.chart, i.deskripsi FROM (SELECT * FROM nilai_indikator WHERE (id_indikator=? AND wilayah="1000" AND periode="00") AND (id_periode, versi) IN (SELECT id_periode, MAX(versi) AS versi FROM nilai_indikator WHERE id_indikator=? AND wilayah="1000" AND periode="00" GROUP BY id_periode) GROUP BY id_periode ORDER BY id_periode DESC) y JOIN indikator i ON y.id_indikator = i.id ORDER BY y.id_periode DESC',[$indikator['id'],[$indikator['id']]])->result_array();
+            }else{
+                $ind []= $db2->query('SELECT y.*, i.nama_indikator as nm_indikator, i.jenis, i.chart, i.deskripsi FROM (SELECT * FROM nilai_indikator WHERE (id_indikator=? AND wilayah="1000") AND (id_periode, versi) IN (SELECT id_periode, MAX(versi) AS versi FROM nilai_indikator WHERE id_indikator=? AND wilayah="1000" GROUP BY id_periode) GROUP BY id_periode ORDER BY id_periode DESC) y JOIN indikator i ON y.id_indikator = i.id ORDER BY y.id_periode DESC',[$indikator['id'],[$indikator['id']]])->result_array();
+            }
+        }
+        foreach($ind as &$i){
+            if($i[0]['periode']=='00'){
+                $i[0]['tahun_periode'] = 'Tahun:'.$i[0]['tahun'];
+                $i[1]['tahun_periode'] = 'Tahun:'.$i[1]['tahun'];
+            }else{
+                $i[0]['tahun_periode'] = 'Tahun(peridode):'.$i[0]['tahun'].'('.$i[0]['periode'].')';
+                $i[1]['tahun_periode'] = 'Tahun(peridode):'.$i[1]['tahun'].'('.$i[1]['periode'].')';
+            }
 
-        // End infografis
-
-
-
-
-
-
-
-
+            if($i[0]['satuan']=='Rp'){
+                $i[0]['nilai_satuan'] = 'Rp'.number_format($i[0]['nilai']/1000000,2,'.',',').' Juta';
+                $i[1]['nilai_satuan'] = 'Rp'.number_format($i[1]['nilai']/1000000,2,'.',',').' Juta';
+            }elseif($i[0]['satuan']=='%'){
+                $i[0]['nilai_satuan'] = number_format($i[0]['nilai'],2).' %';
+                $i[1]['nilai_satuan'] = number_format($i[1]['nilai'],2).' %';
+            }elseif($i[0]['satuan']=='Orang'){
+                $i[0]['nilai_satuan'] = number_format($i[0]['nilai']/100000,2,'.',',').' Juta Orang';
+                $i[1]['nilai_satuan'] = number_format($i[1]['nilai']/100000,2,'.',',').' Juta Orang';
+            }elseif($i[0]['satuan']=='Tahun'){
+                $i[0]['nilai_satuan'] = number_format($i[0]['nilai'],2).' Tahun';
+                $i[1]['nilai_satuan'] = number_format($i[1]['nilai'],2).' Tahun';
+            }else{
+                $i[0]['nilai_satuan'] = number_format($i[0]['nilai'],2);
+                $i[1]['nilai_satuan'] = number_format($i[1]['nilai'],2);
+            }
+        }
+        unset($i);
+//         echo '<pre>';
+// var_dump($ind);
+// echo '</pre>';
+        $data['indikator'] = $ind;
 
         // --------------------------------------------------------------------------------------------------
         $data['list_publications'] = $this->m_guide->getallorderbydesc();

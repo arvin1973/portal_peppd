@@ -62,7 +62,9 @@ $route['kegiatan/pemantauan'] = 'C_pagesController/pemantauan';
 $route['kegiatan/evaluasi'] = 'C_pagesController/evaluasi';
 $route['kegiatan/koordinasi'] = 'C_pagesController/koordinasi';
 
-$route['test'] = 'C_pagesController/test';
+// $route['test'] = 'C_pagesController/test';
+
+$route['infograph/export'] =  'C_infographController/export';
 
 // $route['infograph'] = 'C_pagesController/infograph';
 $route['infograph'] = 'C_infographController/index';

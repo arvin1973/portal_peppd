@@ -1,14 +1,15 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_logPortalController extends CI_Controller {
+class C_logPortalController extends CI_Controller
+{
 
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('M_logPortal', 'm_logPortal');
-	}
-    
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('M_logPortal', 'm_logPortal');
+    }
+
     public function store()
     {
         // $data['token'] = $this->security->get_csrf_hash();
@@ -18,16 +19,16 @@ class C_logPortalController extends CI_Controller {
 
         $getloc = json_decode(file_get_contents("http://ipinfo.io/"));
         $location = $getloc->city;
-	    
-	    $item = array(
-	            'action' => $action,
-                'location' => $location,
-                'ip' => $ip,
-	        );
-	    $LogPortal = $this->m_logPortal->add($item); 
+
+        $item = array(
+            'action' => $action,
+            'location' => $location,
+            'ip' => $ip,
+        );
+        $LogPortal = $this->m_logPortal->add($item);
 
         return $LogPortal;
     }
 
-	
+
 }

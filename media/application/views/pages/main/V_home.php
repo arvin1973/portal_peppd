@@ -5,12 +5,10 @@
         <!-- Section Carousel-->
         <div class="col-md-12 order-1">
           <section class="carousel">
-            <div id="carouselExampleIndicators" class="carousel slide img-thumbnail" data-ride="carousel"
-              style="border-radius: 0">
+            <div id="carouselExampleIndicators" class="carousel slide img-thumbnail" data-ride="carousel" style="border-radius: 0">
               <ol class="carousel-indicators" style="justify-content: left; margin-left: 5%;">
                 <?php for ($i = 0; $i < count($carousel_content); $i++) { ?>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>"
-                    class="<?php echo ($i == 0 ? 'active' : '') ?>"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="<?php echo ($i == 0 ? 'active' : '') ?>"></li>
                 <?php } ?>
               </ol>
               <div class="carousel-inner">
@@ -21,18 +19,10 @@
                       src="<?= base_url(); ?>assets/images/img/carousel/carousel_1_1min.png"
                       alt="First slide"
                   /> -->
-                    <a class="btn-read-more-article" data-id="<?php echo $carousel_content[$i][0]->id ?>"
-                      href="<?= base_url(); ?>news/<?php echo $carousel_content[$i][0]->slug ?>" target="_blank"
-                      rel="noopener">
-                      <!-- <img class="d-block w-100" style="height: 28vw;" src="<?= base_url(); ?>assets/images/summernote/<?php echo $carousel_content[$i][0]->title_picture ?>" alt="<?php echo $i ?> slide" /> -->
-                      <img class="d-block w-100"
-                        style="background: url(<?= base_url(); ?>assets/images/summernote/<?php echo $carousel_content[$i][0]->title_picture ?>); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: black;"
-                        alt="<?php echo $i ?> slide" />
-                      <div class="carousel-caption d-none d-md-block"
-                        style="background-color: rgba(0, 0, 0, 0.7); right: 0!important; left: 0!important; bottom: 0!important; padding: 1% 5% 3% 5%; text-align: left;">
-                        <p class="animate__animated animate__fadeInLeft"><strong>
-                            <?php echo $carousel_content[$i][0]->title ?>
-                          </strong></p>
+                    <a class="btn-read-more-article" data-id="<?php echo $carousel_content[$i][0]->id ?>" href="<?= base_url(); ?>news/<?php echo $carousel_content[$i][0]->slug ?>" target="_blank" rel="noopener">
+                      <img class="d-block w-100" style="height: 28vw;" src="<?= base_url(); ?>assets/images/summernote/<?php echo $carousel_content[$i][0]->title_picture ?>" alt="<?php echo $i ?> slide" />
+                      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.7); right: 0!important; left: 0!important; bottom: 0!important; padding: 1% 5% 3% 5%; text-align: left;">
+                        <p class="animate__animated animate__fadeInLeft"><strong><?php echo $carousel_content[$i][0]->title ?></strong></p>
                       </div>
                     </a>
                   </div>
@@ -62,225 +52,82 @@
             </div>
           </section>
         </div>
+
         <!-- End Section Carousel -->
 
         <!-- infografis card -->
         <div class="col-md-12 order-4">
           <section class="card-infografis">
-            <a href="<?= base_url(); ?>infograph" target="_blank" style="color: black;">
+            <a href="<?= base_url('infograph'); ?>" target="_blank" style="color: black;">
               Infografis
               <i class="fa fa-angle-double-right" aria-hidden="true"></i>
             </a>
             <hr />
-            <div class="row row-infograph">
-              <div class="col-4 p-0">
-                <div class="card card-infograph">
-                  <div class="card-header">
-                    <div class="col-12 p-0">
+            <div class="owl-carousel owl-theme">
+              <?php foreach ($indikator as $i): ?>
+                <div class="item">
+                  <div class="card card-infograph">
+                    <div class="card-header">
                       <h6 class="card-title infograph-title-text"><b>
-                          <?php echo $pertumbuhan_ekonomi[0]['nm_indikator'] ?>
+                          <?= $i[0]['nm_indikator'] ?>
                         </b></h6>
                     </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-7">
-                        <div class="infograph-body-text">
-                          <p><b>Tahun
-                              <?php echo $pertumbuhan_ekonomi[0]['tahun'] ?>:
-                            </b>
-                            <?php echo $pertumbuhan_ekonomi[0]['nilai'] . $pertumbuhan_ekonomi[0]['satuan'] ?>
-
-                          </p>
-
-                          <?php if ($pertumbuhan_ekonomi[0]['jenis'] == 'positif') { ?>
-                            <?php if ($pertumbuhan_ekonomi[0]['nilai'] >= $pertumbuhan_ekonomi[1]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                    title="Naik <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] < $pertumbuhan_ekonomi[2]['nilai']) { ?>
-                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                    title="Turun <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } ?>
-                          <?php } elseif ($pertumbuhan_ekonomi[0]['jenis'] == 'negatif') { ?>
-                            <?php if ($pertumbuhan_ekonomi[0]['nilai'] <= $pertumbuhan_ekonomi[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                    title="Turun <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] > $pertumbuhan_ekonomi[2]['nilai']) { ?>
-                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                    title="Naik <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } ?>
-                          <?php } ?>
-
-
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-4">
+                          <img class="w-100"
+                            src="<?= base_url() ?>assets/images/img/icon_pemantauan/<?= str_replace(' ', '_', strtolower($i[0]['nm_indikator'])) ?>.jpg">
                         </div>
-                        <div class="infograph-body-text">
-                          <p>
-                            <b>Tahun
-                              <?php echo $pertumbuhan_ekonomi[1]['tahun'] ?>:
-                            </b>
-                            <?php echo $pertumbuhan_ekonomi[1]['nilai'] . $pertumbuhan_ekonomi[1]['satuan'] ?>
-
-                          </p>
+                        <div class="col-8">
+                          <div class="infograph-body-text">
+                            <p><b>
+                                <?= $i[0]['tahun'] . '-' . $i[0]['periode'] ?>:
+                              </b>
+                              <?= $i[0]['nilai_satuan'] ?>
+                              <!-- <?= number_format($i[0]['nilai'], 2) . ' ' . $i[0]['satuan'] ?> -->
+                            </p>
+                            <?php if ($i[0]['jenis'] == 'positif') { ?>
+                              <?php if ($i[0]['nilai'] >= $i[1]['nilai']) { ?>
+                                <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                      title="Naik <?= number_format(abs($i[0]['nilai'] - $i[1]['nilai']), 2) . ' ' . $i[0]['satuan'] ?>"></i></span>
+                                </h6>
+                              <?php } elseif ($i[0]['nilai'] < $i[1]['nilai']) { ?>
+                                <h6><span class="badge badge-warning mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                      title="Turun <?= number_format(abs($i[0]['nilai'] - $i[1]['nilai']), 2) . ' ' . $i[0]['satuan'] ?>"></i></span>
+                                </h6>
+                              <?php } ?>
+                            <?php } elseif ($i[0]['jenis'] == 'negatif') { ?>
+                              <?php if ($i[0]['nilai'] <= $i[1]['nilai']) { ?>
+                                <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                      title="Turun <?= number_format(abs($i[0]['nilai'] - $i[1]['nilai']), 2) . ' ' . $i[0]['satuan'] ?>"></i></span>
+                                </h6>
+                              <?php } elseif ($i[0]['nilai'] > $i[1]['nilai']) { ?>
+                                <h6><span class="badge badge-warning mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                      title="Naik <?= number_format(abs($i[0]['nilai'] - $i[1]['nilai']), 2) . ' ' . $i[0]['satuan'] ?>"></i></span>
+                                </h6>
+                              <?php } ?>
+                            <?php } ?>
+                          </div>
+                          <div class="infograph-body-text">
+                            <p><b>
+                                <?= $i[1]['tahun'] . '-' . $i[1]['periode'] ?>:
+                              </b>
+                              <?= $i[1]['nilai_satuan'] ?>
+                              <!-- <?= number_format($i[1]['nilai'], 2) . ' ' . $i[1]['satuan'] ?> -->
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-5">
-                        <img class="w-100"
-                          src="<?= base_url(); ?>assets/images/img/icon_pemantauan/pertumbuhan_ekonomi.jpg"
-                          alt="Pertumbuhan Ekonomi" />
                       </div>
                     </div>
-                  </div>
-                  <div class="card-footer pt-0">
-                    <button type="button" class="button-detail-infograph"
-                      onclick="openDetailPage('pertumbuhan_ekonomi', 'nasional')">
-                      Detail <i class="fa fa-caret-right"></i>
-                    </button>
+                    <div class="card-footer">
+                      <button type="button" class="button-detail-infograph" data-id="<?= $i[0]['id_indikator'] ?>"
+                        onclick="openDetailPage('<?= str_replace(' ', '_', $i[0]['nm_indikator']) ?>', 'nasional')">
+                        Detail <i class="fa fa-caret-right"></i>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-4 p-0">
-                <div class="card card-infograph">
-                  <div class="card-header">
-                    <div class="col-12 p-0">
-                      <h6 class="card-title infograph-title-text"><b>
-                          <?php echo $tingkat_pengangguran_terbuka[0]['nm_indikator'] ?>
-                        </b></h6>
-                      <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-9 ">
-                        <div class="infograph-body-text">
-                          <p><b>Tahun (periode) :
-                              <!-- <?php echo $tingkat_pengangguran_terbuka[0]['periode'] ?> - -->
-                              <?php echo $tingkat_pengangguran_terbuka[0]['tahun'] . ' (' . $tingkat_pengangguran_terbuka[0]['periode'] . ')' ?>:
-                            </b>
-                            <?php echo $tingkat_pengangguran_terbuka[0]['nilai'] . $tingkat_pengangguran_terbuka[0]['satuan'] ?>
-                          </p>
-
-                          <?php if ($tingkat_pengangguran_terbuka[0]['jenis'] == 'positif') { ?>
-                            <?php if ($tingkat_pengangguran_terbuka[0]['nilai'] >= $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                    title="Naik <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } elseif ($tingkat_pengangguran_terbuka[0]['nilai'] < $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                    title="Turun <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } ?>
-                          <?php } elseif ($tingkat_pengangguran_terbuka[0]['jenis'] == 'negatif') { ?>
-                            <?php if ($tingkat_pengangguran_terbuka[0]['nilai'] <= $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                    title="Turun <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } elseif ($tingkat_pengangguran_terbuka[0]['nilai'] > $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                    title="Naik <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } ?>
-                          <?php } ?>
-                        </div>
-                        <div class="infograph-body-text">
-                          <p><b>Tahun (periode) :
-                              <!-- <?php echo $tingkat_pengangguran_terbuka[2]['periode'] ?> - -->
-                              <?php echo $tingkat_pengangguran_terbuka[2]['tahun'] . ' (' . $tingkat_pengangguran_terbuka[2]['periode'] . ')' ?>:
-                            </b>
-                            <?php echo $tingkat_pengangguran_terbuka[2]['nilai'] . $tingkat_pengangguran_terbuka[2]['satuan'] ?>
-
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-3"> <!-- Hide on screens smaller than md -->
-                        <img class="w-100"
-                          src="<?= base_url(); ?>assets/images/img/icon_pemantauan/tingkat_pengangguran_terbuka.jpg"
-                          alt="Tingkat Pengangguran Terbuka" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer pt-0">
-                    <button type="button" class="button-detail-infograph"
-                      onclick="openDetailPage('tingkat_pengangguran_terbuka', 'nasional')">
-                      Detail <i class="fa fa-caret-right"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4 p-0">
-                <div class="card card-infograph">
-                  <div class=" card-header">
-                    <div class="col-12 p-0">
-                      <h6 class="card-title infograph-title-text"><b>
-                          <?php echo $tingkat_kemiskinan[0]['nm_indikator'] ?>
-                        </b></h6>
-                      <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-8">
-                        <div class="infograph-body-text">
-                          <p><b>Tahun (periode) :
-                              <!-- <?php echo $tingkat_kemiskinan[0]['periode'] ?> - -->
-                              <?php echo $tingkat_kemiskinan[0]['tahun'] . ' (' . $tingkat_kemiskinan[0]['periode'] . ')' ?>:
-                            </b>
-                            <?php echo $tingkat_kemiskinan[0]['nilai'] . $tingkat_kemiskinan[0]['satuan'] ?>
-
-                          </p>
-
-                          <?php if ($tingkat_kemiskinan[0]['jenis'] == 'positif') { ?>
-                            <?php if ($tingkat_kemiskinan[0]['nilai'] >= $tingkat_kemiskinan[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                    title="Naik <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } elseif ($tingkat_kemiskinan[0]['nilai'] < $tingkat_kemiskinan[2]['nilai']) { ?>
-                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                    title="Turun <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } ?>
-                          <?php } elseif ($tingkat_kemiskinan[0]['jenis'] == 'negatif') { ?>
-                            <?php if ($tingkat_kemiskinan[0]['nilai'] <= $tingkat_kemiskinan[2]['nilai']) { ?>
-                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                    title="Turun <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } elseif ($tingkat_kemiskinan[0]['nilai'] > $tingkat_kemiskinan[2]['nilai']) { ?>
-                              <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                    title="Naik <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
-                              </h6>
-                            <?php } ?>
-                          <?php } ?>
-
-                        </div>
-                        <div class="infograph-body-text">
-                          <p>
-                            <b>Tahun (periode) :
-                              <!-- <?php echo $tingkat_kemiskinan[2]['periode'] ?> - -->
-                              <?php echo $tingkat_kemiskinan[2]['tahun'] . ' (' . $tingkat_kemiskinan[2]['periode'] . ')' ?>:
-                            </b>
-                            <?php echo $tingkat_kemiskinan[2]['nilai'] . $tingkat_kemiskinan[2]['satuan'] ?>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-4">
-                        <img class="w-100"
-                          src="<?= base_url(); ?>assets/images/img/icon_pemantauan/tingkat_kemiskinan.jpg"
-                          alt="Tingkat Kemiskinan" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer pt-0">
-                    <button type="button" class="button-detail-infograph"
-                      onclick="openDetailPage('tingkat_kemiskinan', 'nasional')">
-                      Detail <i class="fa fa-caret-right"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
+              <?php endforeach; ?>
             </div>
           </section>
         </div>
@@ -758,196 +605,65 @@
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
           </a>
           <hr />
-          <div class="row row-infograph">
-            <div class="col-4 p-0">
-              <div class="card card-infograph">
-                <div class="card-header">
-                  <div class="col-12 p-0">
-                    <h6 class="card-title infograph-title-text"><b>
-                        <?php echo $pertumbuhan_ekonomi[0]['nm_indikator'] ?>
-                      </b></h6>
+          <div class="owl-carousel owl-theme">
+            <?php foreach ($indikator as $i): ?>
+              <div class="item">
+                <div class="card card-infograph">
+                  <div class="card-header">
+                    <p class="card-title infograph-title-text"><b>
+                        <?= $i[0]['nm_indikator'] ?>
+                      </b></p>
                   </div>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="infograph-body-text">
-                        <p><b>Tahun
-                            <?php echo $pertumbuhan_ekonomi[0]['tahun'] ?>:
-                          </b>
-                          <?php echo $pertumbuhan_ekonomi[0]['nilai'] . $pertumbuhan_ekonomi[0]['satuan'] ?>
-
-                        </p>
-
-                        <!-- <?php if ($pertumbuhan_ekonomi[0]['jenis'] == 'positif') { ?>
-                          <?php if ($pertumbuhan_ekonomi[0]['nilai'] >= $pertumbuhan_ekonomi[1]['nilai']) { ?>
-                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                  title="Naik <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] < $pertumbuhan_ekonomi[2]['nilai']) { ?>
-                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                  title="Turun <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
-                            </h6>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="infograph-body-text">
+                          <p><b>
+                              <?= $i[0]['tahun'] . '-' . $i[0]['periode'] ?>:
+                            </b>
+                            <?= number_format($i[0]['nilai'], 2) . ' ' . $i[0]['satuan'] ?>
+                          </p>
+                          <?php if ($i[0]['jenis'] == 'positif') { ?>
+                            <?php if ($i[0]['nilai'] >= $i[1]['nilai']) { ?>
+                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                    title="Naik <?= number_format(abs($i[0]['nilai'] - $i[1]['nilai']), 2) . ' ' . $i[0]['satuan'] ?>"></i></span>
+                              </h6>
+                            <?php } elseif ($i[0]['nilai'] < $i[1]['nilai']) { ?>
+                              <h6><span class="badge badge-warning mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                    title="Turun <?= number_format(abs($i[0]['nilai'] - $i[1]['nilai']), 2) . ' ' . $i[0]['satuan'] ?>"></i></span>
+                              </h6>
+                            <?php } ?>
+                          <?php } elseif ($i[0]['jenis'] == 'negatif') { ?>
+                            <?php if ($i[0]['nilai'] <= $i[1]['nilai']) { ?>
+                              <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
+                                    title="Turun <?= number_format(abs($i[0]['nilai'] - $i[1]['nilai']), 2) . ' ' . $i[0]['satuan'] ?>"></i></span>
+                              </h6>
+                            <?php } elseif ($i[0]['nilai'] > $i[1]['nilai']) { ?>
+                              <h6><span class="badge badge-warning mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
+                                    title="Naik <?= number_format(abs($i[0]['nilai'] - $i[1]['nilai']), 2) . ' ' . $i[0]['satuan'] ?>"></i></span>
+                              </h6>
+                            <?php } ?>
                           <?php } ?>
-                        <?php } elseif ($pertumbuhan_ekonomi[0]['jenis'] == 'negatif') { ?>
-                          <?php if ($pertumbuhan_ekonomi[0]['nilai'] <= $pertumbuhan_ekonomi[2]['nilai']) { ?>
-                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                  title="Turun <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } elseif ($pertumbuhan_ekonomi[0]['nilai'] > $pertumbuhan_ekonomi[2]['nilai']) { ?>
-                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                  title="Naik <?= abs($pertumbuhan_ekonomi[0]['nilai'] - $pertumbuhan_ekonomi[1]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } ?>
-                        <?php } ?> -->
-                      </div>
-                      <div class="infograph-body-text">
-                        <p>
-                          <b>Tahun
-                            <?php echo $pertumbuhan_ekonomi[1]['tahun'] ?>:
-                          </b>
-                          <?php echo $pertumbuhan_ekonomi[1]['nilai'] . $pertumbuhan_ekonomi[1]['satuan'] ?>
-
-                        </p>
+                        </div>
+                        <div class="infograph-body-text">
+                          <p><b>
+                              <?= $i[1]['tahun'] . '-' . $i[1]['periode'] ?>:
+                            </b>
+                            <?= number_format($i[1]['nilai'], 2) . ' ' . $i[1]['satuan'] ?>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card-footer pt-0">
-                  <button type="button" class="button-detail-infograph"
-                    onclick="openDetailPage('pertumbuhan_ekonomi', 'nasional')">
-                    Detail <i class="fa fa-caret-right"></i>
-                  </button>
+                  <div class="card-footer">
+                    <button type="button" class="button-detail-infograph"
+                      onclick="openDetailPage('<?= str_replace(' ', '_', $i[0]['nm_indikator']) ?>', 'nasional')">
+                      Detail <i class="fa fa-caret-right"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-4 p-0">
-              <div class="card card-infograph">
-                <div class="card-header">
-                  <div class="col-12 p-0">
-                    <h6 class="card-title infograph-title-text"><b>
-                        <?php echo $tingkat_pengangguran_terbuka[0]['nm_indikator'] ?>
-                      </b></h6>
-                    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-12 ">
-                      <div class="infograph-body-text">
-                        <p><b>Tahun (periode):
-                            <!--<?php echo $tingkat_pengangguran_terbuka[2]['periode'] ?>-->
-                            <?php echo $tingkat_pengangguran_terbuka[0]['tahun'] . ' (' . $tingkat_pengangguran_terbuka[0]['periode'] . ')' ?>:
-                          </b>
-                          <?php echo $tingkat_pengangguran_terbuka[0]['nilai'] . $tingkat_pengangguran_terbuka[0]['satuan'] ?>
-                        </p>
-
-                        <!-- <?php if ($tingkat_pengangguran_terbuka[0]['jenis'] == 'positif') { ?>
-                          <?php if ($tingkat_pengangguran_terbuka[0]['nilai'] >= $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                  title="Naik <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } elseif ($tingkat_pengangguran_terbuka[0]['nilai'] < $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                  title="Turun <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } ?>
-                        <?php } elseif ($tingkat_pengangguran_terbuka[0]['jenis'] == 'negatif') { ?>
-                          <?php if ($tingkat_pengangguran_terbuka[0]['nilai'] <= $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                  title="Turun <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } elseif ($tingkat_pengangguran_terbuka[0]['nilai'] > $tingkat_pengangguran_terbuka[2]['nilai']) { ?>
-                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                  title="Naik <?= abs($tingkat_pengangguran_terbuka[0]['nilai'] - $tingkat_pengangguran_terbuka[2]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } ?>
-                        <?php } ?> -->
-                      </div>
-                      <div class="infograph-body-text">
-                        <p><b>Tahun (periode):
-                            <!-- <?php echo $tingkat_pengangguran_terbuka[2]['periode'] ?> -->
-                            <?php echo $tingkat_pengangguran_terbuka[2]['tahun'] . ' (' . $tingkat_pengangguran_terbuka[2]['periode'] . ')' ?>:
-                          </b>
-                          <?php echo $tingkat_pengangguran_terbuka[2]['nilai'] . $tingkat_pengangguran_terbuka[2]['satuan'] ?>
-
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer pt-0">
-                  <button type="button" class="button-detail-infograph"
-                    onclick="openDetailPage('tingkat_pengangguran_terbuka', 'nasional')">
-                    Detail <i class="fa fa-caret-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col-4 p-0">
-              <div class="card card-infograph">
-                <div class=" card-header">
-                  <div class="col-12 p-0">
-                    <h6 class="card-title infograph-title-text"><b>
-                        <?php echo $tingkat_kemiskinan[0]['nm_indikator'] ?>
-                      </b></h6>
-                    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="infograph-body-text">
-                        <p><b>Tahun (periode):
-                            <!-- <?php echo $tingkat_kemiskinan[0]['periode'] ?> - -->
-                            <?php echo $tingkat_kemiskinan[0]['tahun'] . ' (' . $tingkat_kemiskinan[0]['periode'] . ')' ?>:
-                          </b>
-                          <?php echo $tingkat_kemiskinan[0]['nilai'] . $tingkat_kemiskinan[0]['satuan'] ?>
-                        </p>
-
-                        <!-- <?php if ($tingkat_kemiskinan[0]['jenis'] == 'positif') { ?>
-                          <?php if ($tingkat_kemiskinan[0]['nilai'] >= $tingkat_kemiskinan[2]['nilai']) { ?>
-                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                  title="Naik <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } elseif ($tingkat_kemiskinan[0]['nilai'] < $tingkat_kemiskinan[2]['nilai']) { ?>
-                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                  title="Turun <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } ?>
-                        <?php } elseif ($tingkat_kemiskinan[0]['jenis'] == 'negatif') { ?>
-                          <?php if ($tingkat_kemiskinan[0]['nilai'] <= $tingkat_kemiskinan[2]['nilai']) { ?>
-                            <h6><span class="badge badge-success mx-2"><i class="fa fa-arrow-down" aria-hidden="true"
-                                  title="Turun <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } elseif ($tingkat_kemiskinan[0]['nilai'] > $tingkat_kemiskinan[2]['nilai']) { ?>
-                            <h6><span class="badge badge-info mx-2"><i class="fa fa-arrow-up" aria-hidden="true"
-                                  title="Naik <?= abs($tingkat_kemiskinan[0]['nilai'] - $tingkat_kemiskinan[2]['nilai']) ?> %"></i></span>
-                            </h6>
-                          <?php } ?>
-                        <?php } ?> -->
-
-                      </div>
-                      <div class="infograph-body-text">
-                        <p>
-                          <b>Tahun (periode):
-                            <!-- <?php echo $tingkat_kemiskinan[2]['periode'] ?> - -->
-                            <?php echo $tingkat_kemiskinan[2]['tahun'] . ' (' . $tingkat_kemiskinan[2]['periode'] . ')' ?>:
-                          </b>
-                          <?php echo $tingkat_kemiskinan[2]['nilai'] . $tingkat_kemiskinan[2]['satuan'] ?>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer pt-0">
-                  <button type="button" class="button-detail-infograph"
-                    onclick="openDetailPage('tingkat_kemiskinan', 'nasional')">
-                    Detail <i class="fa fa-caret-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <?php endforeach; ?>
           </div>
         </section>
       </div>
@@ -1206,13 +922,11 @@
     var postData = {
       indikator: indikator,
       wilayah: wilayah
-      // Add more data as needed
     };
 
-    // Create a hidden form to submit the POST data
     var form = document.createElement('form');
     form.method = 'POST';
-    form.action = '<?= base_url('test'); ?>'; // Specify the target URL here
+    form.action = '<?= base_url('infograph'); ?>';
 
     for (var key in postData) {
       if (postData.hasOwnProperty(key)) {
@@ -1223,8 +937,6 @@
         form.appendChild(input);
       }
     }
-
-    // Append the form to the document and submit it
     document.body.appendChild(form);
     form.submit();
   }
@@ -1253,6 +965,25 @@
       load_article_data(page);
     })
 
+    $(document).on('click', '.button-detail-infograph', function () {
+      var dataId = $(this).attr("data-id");
+      var dataLog = "user mengklik info grafis dengan id = " + dataId + " pada halaman home";
+      $.ajax({
+        type: "POST",
+        url: "<?= base_url(); ?>logPortalController/store",
+        data: {
+          // [csrfName]: csrfHash,
+          action: dataLog,
+        },
+        success: function (result) {
+          // console.log(result);
+        },
+        error: function (result) {
+          console.log(result);
+        }
+      });
+    });
+
     $(document).on('click', '.btn-read-more-article', function () {
       // var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
       // var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -1274,6 +1005,26 @@
       });
     });
 
+    $(document).on('click', '.card-article', function () {
+      // var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
+      // var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+      var dataId = $(this).attr("data-id");
+      var dataLog = "user mengklik article dengan id = " + dataId + " pada halaman home";
+      $.ajax({
+        type: "POST",
+        url: "<?= base_url(); ?>logPortalController/store",
+        data: {
+          // [csrfName]: csrfHash,
+          action: dataLog,
+        },
+        success: function (result) {
+          // console.log(result);
+        },
+        error: function (result) {
+          console.log(result);
+        }
+      });
+    });
     $(document).on('click', '.btn-download-publication', function () {
       // var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
       // var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';

@@ -54,6 +54,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/minified/introjs.min.css">
+
+
+  <link rel="stylesheet"
+    href="<?= base_url() ?>assets/plugins/owlcarousel2/docs/assets/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="<?= base_url() ?>assets/plugins/owlcarousel2/docs/assets/owlcarousel/assets/owl.theme.default.min.css">
 
   <!-- Zircosadmin asset -->
   <!-- <link href="<?= base_url(); ?>assets/zircosadmin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
@@ -82,6 +89,7 @@
 
   <!-- style -->
   <style>
+    
     @media (max-width: 575px) {
       .dekstop {
         display: none !important;
@@ -151,6 +159,10 @@
 
 
       .card-text {
+        font-size: 0.8rem;
+      }
+
+      .card-text-activity {
         text-align: center;
         font-size: 0.8rem;
       }
@@ -241,9 +253,14 @@
       }
 
       .card-text {
+        font-size: 0.8rem;
+      }
+
+      .card-text-activity {
         text-align: center;
         font-size: 0.8rem;
       }
+
 
       .card-infograph {
         margin: 0 5px 3px 2px;
@@ -376,6 +393,10 @@
       }
 
       .card-text {
+        font-size: 0.8rem;
+      }
+
+      .card-text-activity {
         text-align: center;
         font-size: 0.8rem;
       }
@@ -451,7 +472,7 @@
 
       .infograph-title-text {
         font-family: 'Monda', sans-serif;
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
       }
 
@@ -539,6 +560,10 @@
         height: 350px;
         border-radius: 10px;
         border: 1px solid black;
+      }
+
+      .card-article:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
       }
 
 
@@ -649,7 +674,7 @@
 
       .card-infograph {
         margin: 0 5px 3px 2px;
-        height: 250px;
+        height: 280px;
         border-radius: 10px;
         border: 1px solid black;
       }
@@ -671,6 +696,11 @@
       }
 
       .card-text {
+        font-size: 0.8rem;
+      }
+      
+
+      .card-text-activity {
         text-align: center;
         font-size: 0.8rem;
       }
@@ -679,14 +709,14 @@
     @media (min-width: 1550px) {
       .card-infograph {
         margin: 0 5px 3px 2px;
-        height: 200px;
+        height: 280px;
         border-radius: 10px;
         border: 1px solid black;
       }
 
       .infograph-title-text {
         font-family: 'Monda', sans-serif;
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
       }
 
@@ -1039,6 +1069,8 @@
   <!-- <script src="<?= base_url(); ?>assets/zircosadmin/assets/js/jquery.core.js"></script> -->
   <!-- <script src="<?= base_url(); ?>assets/zircosadmin/assets/js/jquery.app.js"></script> -->
   <!-- End zircosadmin asset -->
+  
+  <script>introJs().start();</script>
 
 </head>
 
