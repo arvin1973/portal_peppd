@@ -4,27 +4,25 @@ Last Update  : 15 March 2022 -->
 <?php
     $cookie_name = "load";
     $cookie_value = "true";
-    $durasi = 10; //1jam
+    $durasi = 1000; //1jam
     setcookie($cookie_name, $cookie_value, time() + $durasi, "/"); 
 ?>
-
-<?php if(!isset($_COOKIE[$cookie_name])) : ?>
-    <script>
+<script>
     function intro() {
         introJs().setOptions({ nextLabel: "Selanjutnya", prevLabel: "Kembali", doneLabel: "Selesai" }).start();
         introJs().setOptions({ hintButtonLabel: "Mengerti", hintShowButton: false }).addHints();
     }
-
+</script>
+<?php if(!isset($_COOKIE[$cookie_name])) : ?>
+    <script>
     if (window.innerWidth >= 1024) {
-        console.log('Screen width is >= 1024');
         window.onload = function () {
             intro();
         };
     }
-</script>
-
-    Cookie named <?= $cookie_name ?> is not set
+    </script>
 <?php endif; ?>
+
 <div class="container-md" style="margin-top: 7rem">
     <?php setlocale(LC_TIME, 'id_ID', 'Indonesian_indonesia', 'Indonesian'); ?>
     <div class="row">
@@ -54,16 +52,16 @@ Last Update  : 15 March 2022 -->
                                                     <label for="indikator">Indikator</label>
                                                     <select class="form-control" class="selectIndikator" id="indikator" name="indikator" data-title="Langkah pertama!" data-intro='Untuk mengubah indikator yang akan dicari'>
                                                         <?php foreach($list_indikator as $ind) :?>
-                                                            <option value="<?= $ind['nama_indikator'] ?>" <?= $IndikatorTable[0]['nama_indikator'] == $ind['nama_indikator'] ? "selected" : "" ?>><?= $ind['nama_indikator']?></option>
+                                                            <option value="<?= $this->encryption->encrypt($ind['nama_indikator']) ?>" <?= $IndikatorTable[0]['nama_indikator'] == $ind['nama_indikator'] ? "selected" : "" ?>><?= $ind['nama_indikator']?></option>
                                                         <?php endforeach?>
                                                      </select>
                                                 </div>
                                                 <div class="form-group" style="margin-bottom: 0.5rem;">
                                                     <label for="wilayah">Wilayah</label>
                                                     <select class="form-control" id="selectWilayah" name="wilayah" data-title="Langkah Kedua!"  data-intro='Untuk mengubah wilayah yang akan dicari'>
-                                                        <option value="nasional" <?php echo ($wilayah == 'nasional') ? 'selected' : '' ?>>Nasional</option>
-                                                        <option value="provinsi" <?php echo ($wilayah == 'provinsi') ? 'selected' : '' ?>>Provinsi</option>
-                                                        <option value="kabupatenkota" <?php echo ($wilayah == 'kabupatenkota') ? 'selected' : '' ?>>Kabupaten/ Kota</option>
+                                                        <option value="<?=$nasional?>" <?php echo ($wilayah == 'nasional') ? 'selected' : '' ?>>Nasional</option>
+                                                        <option value="<?=$provinsi?>" <?php echo ($wilayah == 'provinsi') ? 'selected' : '' ?>>Provinsi</option>
+                                                        <option value="<?=$kabupatenkota?>" <?php echo ($wilayah == 'kabupatenkota') ? 'selected' : '' ?>>Kabupaten/ Kota</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group form-group-sub-wilayah" style="margin-bottom: 0.5rem; display: <?php if (($wilayah == 'provinsi') || ($wilayah == 'kabupatenkota')) {
@@ -121,7 +119,7 @@ Last Update  : 15 March 2022 -->
                                                             <td><a type="button" style="padding: 3px 8px 3px 8px; float: right; font-size: 11px; margin-top: 0px;" class="button-read-more btn-read-more-article" onclick="exportData('<?= $IndikatorTable[0]['id'] ?>', '<?= $this->encryption->encrypt($subWilayahDaerah[0]['id']) ?>',null)"><i class="fa fa-xl fa-download"></i></a></td>
                                                         </tr>
                                                         <tr style="border:8px solid transparent">
-                                                            <td style="border:8px solid transparent">Perbandingan <?php echo $IndikatorTable[0]['nama_indikator'] . ' Antar Kabupaten/Kota di ' . $subWilayahDaerah[0]['nama_kabupaten'] . ' Tahun ' . $infographkabupatenkota[5]['tahun'] . '.xlsx'; ?></td>
+                                                            <td style="border:8px solid transparent">Perbandingan <?php echo $IndikatorTable[0]['nama_indikator'] . ' Antar Kabupaten/Kota di ' . $subWilayah[0]['nama_provinsi'] . ' Tahun ' . $infographkabupatenkota[5]['tahun'] . '.xlsx'; ?></td>
                                                             <td><a type="button" style="padding: 3px 8px 3px 8px; float: right; font-size: 11px; margin-top: 0px;" class="button-read-more btn-read-more-article" onclick="exportData('<?= $IndikatorTable[0]['id'] ?>', '<?= $this->encryption->encrypt($subWilayahDaerah[0]['id']) ?>','kabkot')"><i class="fa fa-xl fa-download"></i></a></td>
                                                         </tr><?php endif; ?>
                                                 </table>
@@ -134,16 +132,16 @@ Last Update  : 15 March 2022 -->
                                                     <label for="indikator">Indikator</label>
                                                     <select class="form-control" class="selectIndikator" name="indikator">
                                                     <?php foreach($list_indikator as $ind) :?>
-                                                        <option value="<?= $ind['nama_indikator'] ?>"><?= $ind['nama_indikator']?></option>
+                                                        <option value="<?= $this->encryption->encrypt($ind['nama_indikator']) ?>"><?= $ind['nama_indikator']?></option>
                                                     <?php endforeach ?>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="wilayah">Wilayah</label>
                                                     <select class="form-control" id="selectWilayah" name="wilayah">
-                                                        <option value="nasional">Nasional</option>
-                                                        <option value="provinsi">Provinsi</option>
-                                                        <option value="kabupatenkota">Kabupaten/ Kota</option>
+                                                        <option value="<?=$nasional?>">Nasional</option>
+                                                        <option value="<?=$provinsi?>">Provinsi</option>
+                                                        <option value="<?=$kabupatenkota?>">Kabupaten/ Kota</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group form-group-sub-wilayah" style="display: none;">
@@ -1352,28 +1350,17 @@ Last Update  : 15 March 2022 -->
                                         <div class="form-group" style="margin-bottom: 0.5rem;">
                                             <label for="indikator">Indikator</label>
                                             <select class="form-control" class="selectIndikatorModal" id="indikatorModal" name="indikator">
-                                                <option value="Pertumbuhan_Ekonomi" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Pertumbuhan Ekonomi' ? "selected" : "") ?>>Pertumbuhan Ekonomi</option>
-                                                <option value="PDRB_per_Kapita_ADHB" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'PDRB per Kapita ADHB' ? "selected" : "") ?>>PDRB per Kapita ADHB</option>
-                                                <option value="PDRB_per_Kapita_ADHK_Tahun_Dasar_2010" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'PDRB per Kapita ADHK Tahun Dasar 2010' ? "selected" : "") ?>>PDRB per Kapita ADHK Tahun Dasar 2010</option>
-                                                <option value="Jumlah_Penganggur" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Jumlah Penganggur' ? "selected" : "") ?>>Jumlah Penganggur</option>
-                                                <option value="Tingkat_Pengangguran_Terbuka" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Tingkat Pengangguran Terbuka' ? "selected" : "") ?>>Tingkat Pengangguran Terbuka</option>
-                                                <option value="Indeks_Pembangunan_Manusia" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Indeks Pembangunan Manusia' ? "selected" : "") ?>>Indeks Pembangunan Manusia</option>
-                                                <option value="Gini_Rasio" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Gini Rasio' ? "selected" : "") ?>>Gini Rasio</option>
-                                                <option value="Angka_Harapan_Hidup" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Angka Harapan Hidup' ? "selected" : "") ?>>Angka Harapan Hidup</option>
-                                                <option value="Rata-rata_Lama_Sekolah" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Rata-rata Lama Sekolah' ? "selected" : "") ?>>Rata-rata Lama Sekolah</option>
-                                                <option value="Harapan_Lama_Sekolah" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Harapan Lama Sekolah' ? "selected" : "") ?>>Harapan Lama Sekolah</option>
-                                                <option value="Pengeluaran_per_Kapita" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Pengeluaran per Kapita' ? "selected" : "") ?>>Pengeluaran per Kapita</option>
-                                                <option value="Indeks_Kedalaman_Kemiskinan" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Indeks Kedalaman Kemiskinan' ? "selected" : "") ?>>Indeks Kedalaman Kemiskinan</option>
-                                                <option value="Tingkat_Kemiskinan" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Tingkat Kemiskinan' ? "selected" : "") ?>>Tingkat Kemiskinan</option>
-                                                <option value="Jumlah_Penduduk_Miskin" <?php echo ($IndikatorTable[0]['nama_indikator'] == 'Jumlah Penduduk Miskin' ? "selected" : "") ?>>Jumlah Penduduk Miskin</option>
+                                                <?php foreach($list_indikator as $ind) :?>
+                                                    <option value="<?= $ind['nama_indikator'] ?>" <?= $IndikatorTable[0]['nama_indikator'] == $ind['nama_indikator'] ? "selected" : "" ?>><?= $ind['nama_indikator']?></option>
+                                                <?php endforeach?>
                                             </select>
                                         </div>
                                         <div class="form-group" style="margin-bottom: 0.5rem;">
                                             <label for="wilayah">Wilayah</label>
                                             <select class="form-control" id="selectWilayahModal" name="wilayah">
-                                                <option value="nasional" <?php echo ($wilayah == 'nasional') ? 'selected' : '' ?>>Nasional</option>
-                                                <option value="provinsi" <?php echo ($wilayah == 'provinsi') ? 'selected' : '' ?>>Provinsi</option>
-                                                <option value="kabupatenkota" <?php echo ($wilayah == 'kabupatenkota') ? 'selected' : '' ?>>Kabupaten/ Kota</option>
+                                                <option value="<?=$nasional?>" <?php echo ($wilayah == 'nasional') ? 'selected' : '' ?>>Nasional</option>
+                                                <option value="<?=$provinsi?>" <?php echo ($wilayah == 'provinsi') ? 'selected' : '' ?>>Provinsi</option>
+                                                <option value="<?=$kabupatenkota?>" <?php echo ($wilayah == 'kabupatenkota') ? 'selected' : '' ?>>Kabupaten/ Kota</option>
                                             </select>
                                         </div>
                                         <div class="form-group form-group-sub-wilayah-modal" style="margin-bottom: 0.5rem; display: <?php if (($wilayah == 'provinsi') || ($wilayah == 'kabupatenkota')) {
@@ -1412,35 +1399,24 @@ Last Update  : 15 March 2022 -->
                                         <div class="form-group">
                                             <label for="indikator">Indikator</label>
                                             <select class="form-control" class="selectIndikatorModal" name="indikator">
-                                                <option value="Pertumbuhan Ekonomi">Pertumbuhan Ekonomi</option>
-                                                <option value="PDRB per Kapita ADHB">PDRB per Kapita ADHB</option>
-                                                <option value="PDRB per Kapita ADHK Tahun Dasar 2010">PDRB per Kapita ADHK Tahun Dasar 2010</option>
-                                                <option value="Jumlah Penganggur">Jumlah Penganggur</option>
-                                                <option value="Tingkat Pengangguran Terbuka">Tingkat Pengangguran Terbuka</option>
-                                                <option value="Indeks Pembangunan Manusia">Indeks Pembangunan Manusia</option>
-                                                <option value="Gini Rasio">Gini Rasio</option>
-                                                <option value="Angka Harapan Hidup">Angka Harapan Hidup</option>
-                                                <option value="Rata-rata Lama Sekolah">Rata-rata Lama Sekolah</option>
-                                                <option value="Harapan Lama Sekolah">Harapan Lama Sekolah</option>
-                                                <option value="Pengeluaran per Kapita">Pengeluaran per Kapita</option>
-                                                <option value="Indeks Kedalaman Kemiskinan">Indeks Kedalaman Kemiskinan</option>
-                                                <option value="Tingkat Kemiskinan">Tingkat Kemiskinan</option>
-                                                <option value="Jumlah Penduduk Miskin">Jumlah Penduduk Miskin</option>
+                                                <?php foreach($list_indikator as $ind) :?>
+                                                    <option value="<?= $this->encryption->encrypt($ind['nama_indikator']) ?>"><?= $ind['nama_indikator']?></option>
+                                                <?php endforeach ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="wilayah">Wilayah</label>
                                             <select class="form-control" id="selectWilayahModal" name="wilayah">
-                                                <option value="nasional">Nasional</option>
-                                                <option value="provinsi">Provinsi</option>
-                                                <option value="kabupatenkota">Kabupaten/ Kota</option>
+                                                <option value="<?=$nasional?>">Nasional</option>
+                                                <option value="<?=$provinsi?>">Provinsi</option>
+                                                <option value="<?=$kabupatenkota?>">Kabupaten/ Kota</option>
                                             </select>
                                         </div>
                                         <div class="form-group form-group-sub-wilayah-modal" style="display: none;">
                                             <label for="sub-wilayah">Provinsi</label>
                                             <select class="form-control" id="selectSubWilayahModal" name="subWilayah">
                                                 <?php foreach ($list_provinsi as $list_p) { ?>
-                                                                <option value="<?php echo $list_p['id'] ?>"><?php echo $list_p['nama_provinsi'] ?></option>
+                                                        <option value="<?php echo $list_p['id'] ?>"><?php echo $list_p['nama_provinsi'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -2817,61 +2793,6 @@ function exportData(indikator, wilayah, file) {
 
     });
 
-    $('#selectWilayah').on('change', function() {
-
-        if (this.value == 'provinsi') {
-
-            $(".form-group-sub-wilayah").show();
-            $("#selectSubWilayah").prop('required', true);
-            $(".form-group-kabupaten-kota").hide();
-            $("#selectKabupatenKota").prop('required', false);
-
-        } else if (this.value == 'kabupatenkota') {
-
-            $(".form-group-sub-wilayah").show();
-            $("#selectSubWilayah").prop('required', true);
-            $(".form-group-kabupaten-kota").show();
-            $("#selectKabupatenKota").prop('required', true);
-
-
-        } else {
-
-            $("#selectSubWilayah").prop('required', false);
-            $(".form-group-sub-wilayah").hide();
-            $("#selectKabupatenKota").prop('required', false);
-            $(".form-group-kabupaten-kota").hide();
-
-        }
-
-    });
-
-    $('#selectWilayahModal').on('change', function() {
-
-        if (this.value == 'provinsi') {
-
-            $(".form-group-sub-wilayah-modal").show();
-            $("#selectSubWilayahModal").prop('required', true);
-            $(".form-group-kabupaten-kota-modal").hide();
-            $("#selectKabupatenKotaModal").prop('required', false);
-
-        } else if (this.value == 'kabupatenkota') {
-
-            $(".form-group-sub-wilayah-modal").show();
-            $("#selectSubWilayahModal").prop('required', true);
-            $(".form-group-kabupaten-kota-modal").show();
-            $("#selectKabupatenKotaModal").prop('required', true);
-
-
-        } else {
-
-            $("#selectSubWilayahModal").prop('required', false);
-            $(".form-group-sub-wilayah-modal").hide();
-            $("#selectKabupatenKotaModal").prop('required', false);
-            $(".form-group-kabupaten-kota-modal").hide();
-
-        }
-
-    });
 
     $(document).ready(function() {
         function updateSelectKabupatenKota(selectedValue) {
@@ -2965,9 +2886,37 @@ function exportData(indikator, wilayah, file) {
 
     });
 
+    $('#selectWilayahModal').on('change', function() {
+
+        if (this.value == '<?=$provinsi?>') {
+
+            $(".form-group-sub-wilayah-modal").show();
+            $("#selectSubWilayahModal").prop('required', true);
+            $(".form-group-kabupaten-kota-modal").hide();
+            $("#selectKabupatenKotaModal").prop('required', false);
+
+        } else if (this.value == '<?=$kabupatenkota?>') {
+
+            $(".form-group-sub-wilayah-modal").show();
+            $("#selectSubWilayahModal").prop('required', true);
+            $(".form-group-kabupaten-kota-modal").show();
+            $("#selectKabupatenKotaModal").prop('required', true);
+
+
+        } else {
+
+            $("#selectSubWilayahModal").prop('required', false);
+            $(".form-group-sub-wilayah-modal").hide();
+            $("#selectKabupatenKotaModal").prop('required', false);
+            $(".form-group-kabupaten-kota-modal").hide();
+
+        }
+
+        });
+
     $('#selectWilayah').on('change', function() {
 
-        if (this.value == 'provinsi') {
+        if (this.value == '<?=$provinsi?>') {
             var json = <?php echo $json_list_provinsi; ?>;
 
                 var txt = "<option value=''>-Pilih-</option>";
@@ -2975,12 +2924,12 @@ function exportData(indikator, wilayah, file) {
                     txt += "<option value=" + json[i].id + ">" + json[i].nama_provinsi + "</option>";
                 }
                 $("#selectSubWilayah").html(txt);
-                $("#selectSubWilayahMobile").html(txt);
+                $("#selectWilayahModal").html(txt);
 
             $(".form-group-sub-wilayah").show();
             $(".form-group-kabupaten-kota").hide();
 
-        } else if (this.value == 'kabupatenkota') {
+        } else if (this.value == '<?=$kabupatenkota?>') {
             
             var json = <?php echo $json_list_provinsi; ?>;
             
@@ -2989,7 +2938,7 @@ function exportData(indikator, wilayah, file) {
                     txt += "<option value=" + json[i].id + ">" + json[i].nama_provinsi + "</option>";
                 }
                 $("#selectSubWilayah").html(txt);
-                $("#selectSubWilayahMobile").html(txt);
+                $("#selectWilayahModal").html(txt);
             
 
             $(".form-group-sub-wilayah").show();
@@ -3003,6 +2952,8 @@ function exportData(indikator, wilayah, file) {
         }
 
     });
+
+    
 
     $('#selectSubWilayah').on('change', function() {
     var selectedValue = $(this).val();

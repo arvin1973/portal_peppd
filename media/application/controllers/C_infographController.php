@@ -443,6 +443,7 @@ class C_infographController extends CI_Controller
     {
         $this->load->model('M_description_indicator', 'm_description_indicator');
 
+
         $nav['last_article'] = $this->m_article->getallorderbydescwhere1('status', 'publish');
         $nav['last_guide'] = $this->m_guide->getallorderbydesc();
 
@@ -460,6 +461,9 @@ class C_infographController extends CI_Controller
             $newId = $this->encryption->encrypt($id);
             $provinsi['id'] = $newId;
         }
+        $data['nasional'] = $this->encryption->encrypt('nasional');
+        $data['provinsi'] = $this->encryption->encrypt('provinsi');
+        $data['kabupatenkota'] = $this->encryption->encrypt('kabupatenkota');
         $json_list_provinsi = json_encode($data['list_provinsi']);
         $json_list_kab_kot = json_encode($data['list_kab_kot']);
 
@@ -470,24 +474,43 @@ class C_infographController extends CI_Controller
 
         $data['IndikatorTable'] = null;
         $data['wilayah'] = null;
-
-        $indikator = strtolower(str_replace("_", " ", $this->input->post('indikator', TRUE)));
+        
+        $post_indikator = htmlspecialchars($this->input->post('indikator', TRUE));
+        if($post_indikator){
+            $post_indikator = $this->encryption->decrypt($post_indikator);
+            if($post_indikator == false){
+                redirect('infograph');
+            }
+        }
+        $indikator = strtolower(str_replace("_", " ", $post_indikator));
+        // var_dump($indikator);
+        // die;
 
         if ($indikator) {
             $data['indikator'] = strtolower(str_replace("_", " ", $indikator));
-            $query = "'SELECT * FROM indikator WHERE nama_indikator = ?', $indikator";
+            $query = $db2->get_where('indikator', ['nama_indikator' => $indikator])->row();
+            if(!$query){
+                redirect('infograph');
+            }
             $data['IndikatorTable'] = $db2->query("SELECT * FROM indikator WHERE nama_indikator = ?", [$indikator])->result_array();
+            
         }
 
 
         $indktr = $data['IndikatorTable']['0']['id'];
         $wilayah = $this->input->post('wilayah', TRUE);
-        $kodeSubWilayah = $this->input->post('subWilayah', TRUE);
+        if($wilayah){
+            $wilayah = $this->encryption->decrypt($wilayah);
+            if($wilayah == false){
+                redirect('infograph');
+            }
+        }
+        $kodeSubWilayah = htmlspecialchars($this->input->post('subWilayah', TRUE));
 
         if ($kodeSubWilayah) {
             $kodeSubWilayah = $this->encryption->decrypt($kodeSubWilayah);
             if ($kodeSubWilayah === false) {
-                redirect('test/404');
+                redirect('infograph');
             }
         }
 
@@ -502,12 +525,12 @@ class C_infographController extends CI_Controller
 
 
         $kodeKabupatenKota = null;
-        $kodeKabupatenKota = $this->input->post('kabupatenkota');
+        $kodeKabupatenKota = htmlspecialchars($this->input->post('kabupatenkota'));
         $data['kodeKabupatenKota'] = $kodeKabupatenKota;
         if ($kodeKabupatenKota) {
             $kodeKabupatenKota = $this->encryption->decrypt($kodeKabupatenKota);
             if ($kodeKabupatenKota === false) {
-                redirect('test/404');
+                redirect('infograph');
             }
         }
         if ($kodeKabupatenKota) {
@@ -1040,6 +1063,8 @@ class C_infographController extends CI_Controller
 
     public function export()
     {
+
+
         $indikator = $this->input->post('indikator');
         $wilayah = $this->input->post('wilayah');
         $file = $this->input->post('file');
@@ -1103,6 +1128,9 @@ class C_infographController extends CI_Controller
         } else {
             $keterangan = 'Nilai lebih rendah lebih baik';
         }
+
+        
+
 
         $style_col = [
             'font' => ['bold' => true],

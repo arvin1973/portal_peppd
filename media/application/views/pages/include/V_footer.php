@@ -81,11 +81,91 @@
   </div>
   <!-- Copyright -->
 </footer>
+<script>
+    const base_url = "<?php echo base_url(); ?>";
+</script>
 <!-- Footer -->
 
 <script src="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/owlcarousel2/docs/assets/vendors/jquery.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/owlcarousel2/docs/assets/owlcarousel/owl.carousel.js"></script>
+
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+
+
+<script> const indonesiaJson = base_url+'assets/indonesia.json' </script>
+<script src="<?= empty($js) ? '' : base_url($js) ?>"></script>
+<script>
+  (async () => {
+    
+const topology = await fetch(
+  indonesiaJson
+).then(response => response.json());
+
+// Prepare demo data. The data is joined to map using value of 'hc-key'
+// property by default. See API docs for 'joinBy' for more info on linking
+// data and map.
+const data = [
+    ['id-9999', ], ['id-1100', ], ['id-1200', ], ['id-1300', ],
+    ['id-1400', ], ['id-1500', ], ['id-1600', ], ['id-1700', ],
+    ['id-1800', ], ['id-1900', ], ['id-2100', ], ['id-3100', ],
+    ['id-3200', ], ['id-3300', ], ['id-3400', ], ['id-3500', ],
+    ['id-3600', ], ['id-5100', ], ['id-5200', ], ['id-5300', ],
+    ['id-6100', ], ['id-6200', ], ['id-6300', ], ['id-6400', ],
+    ['id-6500', ], ['id-7100', ], ['id-7200', ], ['id-7300', ],
+    ['id-7400', ], ['id-7500', ], ['id-7600', ], ['id-8100', ],
+    ['id-8200', ], ['id-9100', ], ['id-9400', ]
+];
+
+// Create the chart
+Highcharts.mapChart('container', {
+    chart: {
+        map: topology
+    },
+
+    title: {
+        text: ''
+    },
+
+    subtitle: {
+        text: ''
+    },
+
+    mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+
+    colorAxis: {
+        min: 0
+    },
+    legend: {
+        enabled: false // Disable the legend
+    },
+
+    series: [{
+        data: data,
+        name: 'Random data',
+        states: {
+            hover: {
+                color: '#BADA55'
+            }
+        },
+        dataLabels: {
+            enabled: false,
+            format: '{point.name}'
+        }
+    }]
+});
+
+})();
+
+</script>
+
+
 <script>
   var owl = $('.owl-carousel');
   owl.owlCarousel({

@@ -121,7 +121,7 @@
                     </div>
                     <div class="card-footer">
                       <button type="button" class="button-detail-infograph" data-id="<?= $i[0]['id_indikator'] ?>"
-                        onclick="openDetailPage('<?= str_replace(' ', '_', $i[0]['nm_indikator']) ?>', 'nasional')">
+                        onclick="openDetailPage('<?= $this->encryption->encrypt(str_replace(' ', '_', $i[0]['nm_indikator'])) ?>', '<?=$this->encryption->encrypt('nasional')?>')">
                         Detail <i class="fa fa-caret-right"></i>
                       </button>
                     </div>
@@ -657,7 +657,7 @@
                   </div>
                   <div class="card-footer">
                     <button type="button" class="button-detail-infograph"
-                      onclick="openDetailPage('<?= str_replace(' ', '_', $i[0]['nm_indikator']) ?>', 'nasional')">
+                      onclick="openDetailPage('<?= $this->encryption->encrypt(str_replace(' ', '_', $i[0]['nm_indikator'])) ?>',  '<?=$this->encryption->encrypt('nasional')?>)'">
                       Detail <i class="fa fa-caret-right"></i>
                     </button>
                   </div>

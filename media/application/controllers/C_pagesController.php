@@ -919,18 +919,39 @@ class C_pagesController extends CI_Controller
 
     public function evaluasi()
     {
+        $this->db2 = $this->load->database('pemantauan', TRUE);
         $nav['last_article'] = $this->m_article->getallorderbydescwhere1('status', 'publish');
         $nav['last_guide'] = $this->m_guide->getallorderbydesc();
 
         $category = $this->m_article->selectdistinctorderbydesc('id_category', 'created_at', 'DESC');
 
+        
+        $data['js']= 'assets/js/evaluasi.js';
         for ($i = 0; $i < count($category); $i++) {
             $data['carousel_content'][$i] = $this->m_article->joinCategorieswhere2limit('status', 'publish', 'id_category', $category[$i]->id_category, '1');
         }
+        $data['list_pn'] = $this->db2->get('pn')->result_array();
+        // var_dump($data['list_pn']);
+        // die;
 
         $this->load->view('pages/include/V_header', $nav);
         $this->load->view('pages/main/V_evaluasi', $data);
         $this->load->view('pages/include/V_footer');
+    }
+
+    public function get_data()
+    {
+        $this->db2 = $this->load->database('pemantauan', TRUE);
+        $id_pn = $this->input->post('selected_value');
+        $data = $this->db2->query("SELECT wilayah,nilai FROM rkp_pn WHERE pn = $id_pn")->result_array();
+        $data_pn = $this->db2->query("SELECT * FROM pn WHERE id_pn = $id_pn")->row_array();
+
+        $json = [
+            'data' => $data,
+            'data_pn' => $data_pn
+        ];
+        
+        $this->output->set_content_type('application/json')->set_output(json_encode($json));
     }
 
     public function koordinasi()
